@@ -1,0 +1,65 @@
+---
+const trustItems = [
+  {
+    title: 'KVKK Uyumlu',
+    description: 'Maskeli pano icmali ve şeffaf erişim yetkileri',
+    icon: 'shield',
+  },
+  {
+    title: 'R2 Belge Arşivi',
+    description: 'Fatura, karar defteri ve dekontlar şifreli bulutta',
+    icon: 'archive',
+  },
+  {
+    title: 'Otomatik FIFO Mahsup',
+    description: 'Gelen tahsilat en eski borçtan sırayla düşer',
+    icon: 'layers',
+  },
+  {
+    title: 'Anlık E-posta Bildirimi',
+    description: 'Aidat tahakkuku, makbuz ve dekont onayı anında iletilir',
+    icon: 'mail',
+  },
+] as const;
+---
+
+<section aria-label="Öne çıkan güvenceler" class="border-y border-emerald-500/12 bg-[#09120e]">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      {
+        trustItems.map((item) => (
+          <div class="flex items-start gap-3.5">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-emerald-500/25 bg-emerald-500/10 text-emerald-400">
+              {item.icon === 'shield' && (
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 3 4 6.5v5.5c0 5.1 3.4 9.7 8 11 4.6-1.3 8-5.9 8-11V6.5L12 3Z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m9 12 2 2 4-4" />
+                </svg>
+              )}
+              {item.icon === 'archive' && (
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M5 7v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7M9.5 11.5h5M3 5a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v2H3V5Z" />
+                </svg>
+              )}
+              {item.icon === 'layers' && (
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 3 3 7.5 12 12l9-4.5L12 3ZM3 12l9 4.5 9-4.5M3 16.5 12 21l9-4.5" />
+                </svg>
+              )}
+              {item.icon === 'mail' && (
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="14" rx="2.5" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m4 7 8 6 8-6" />
+                </svg>
+              )}
+            </div>
+            <div>
+              <h2 class="text-sm font-semibold text-white">{item.title}</h2>
+              <p class="mt-1 text-xs leading-relaxed text-slate-400">{item.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

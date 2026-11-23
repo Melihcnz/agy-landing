@@ -1,0 +1,63 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { SITE } from '../config/site';
+---
+
+<LegalLayout
+  title="Mesafeli Satış ve Abonelik Sözleşmesi"
+  description="AgyProp Apartman ve Site Yönetim SaaS platformu dijital abonelik ve mesafeli hizmet satış sözleşmesi."
+  summary="AgyProp bulut yazılım abonelik paketlerinin satış, faturalandırma, teslimat ve kullanım koşullarını düzenleyen mesafeli hizmet sözleşmesidir."
+  canonicalPath="/mesafeli-satis-sozlesmesi"
+>
+  <h2>1. Taraflar</h2>
+  <p>
+    İşbu Mesafeli Satış ve Abonelik Sözleşmesi (“Sözleşme”), bir tarafta hizmet sağlayıcı <strong>{SITE.company.legalName}</strong> (“Sağlayıcı”) ile diğer tarafta {SITE.appUrl} üzerinden dijital abonelik satın alan apartman/site yöneticisi, yönetim kurulu veya tüzel kişi temsilcisi (“Alıcı / Abone”) arasında elektronik ortamda kurulmuştur.
+  </p>
+
+  <h2>2. Sözleşmenin Konusu</h2>
+  <p>
+    İşbu Sözleşme’nin konusu, Alıcı’nın {SITE.siteUrl} veya {SITE.appUrl} üzerinden elektronik ortamda seçtiği <strong>{SITE.brandName}</strong> bulut tabanlı apartman ve site yönetim yazılımı (SaaS) paketinin aylık veya yıllık abonelik modeliyle kullanıma sunulmasına ilişkin hak ve yükümlülüklerin belirlenmesidir.
+  </p>
+
+  <h2>3. Hizmetin Temel Nitelikleri ve Paketler</h2>
+  <p>
+    {SITE.brandName}; aidat tahakkuku, otomatik FIFO mahsup, A5 PDF makbuz üretimi, KVKK maskeli pano icmali, sakin dekont onayı, e-posta bildirimleri, arıza/bakım takibi ve R2 belge arşivi modüllerini içeren çevrimiçi bir yazılım hizmetidir.
+  </p>
+  <ul>
+    <li><strong>Paket Seçenekleri:</strong> Başlangıç (Tek Bina), Starter, Profesyonel ve Kurumsal olmak üzere bina ve bağımsız bölüm limitlerine göre kademelendirilmiş paketler sunulur.</li>
+    <li><strong>Faturalandırma Dönemi:</strong> Alıcı, paketini <strong>Aylık</strong> veya <strong>Yıllık (2 Ay Ücretsiz avantajlı)</strong> dönemlerle seçebilir. Güncel ücretler satın alma ve ödeme onay ekranında Türk Lirası (TRY) cinsinden açıkça gösterilir.</li>
+  </ul>
+
+  <h2>4. 14 Günlük Ücretsiz Deneme ve Ödeme Koşulları</h2>
+  <ul>
+    <li>Yeni hesaplar kredi kartı bilgisi gerektirmeden <strong>{SITE.defaultTrialDays} gün ücretsiz</strong> deneme hakkından yararlanabilir.</li>
+    <li>Ücretli abonelik başlatıldığında ödeme, BDDK lisanslı ödeme kuruluşu (PayTR / iyzico) sanal POS altyapısı üzerinden kredi kartı veya banka kartı ile tahsil edilir.</li>
+    <li>Ödeme onayını takiben yasal e-fatura / e-arşiv fatura düzenlenerek Alıcı’nın kayıtlı e-posta adresine iletilir.</li>
+    <li>Sağlayıcı, önceden makul süreyle e-posta veya panel içi bildirim yapmak suretiyle yeni dönem abonelik ücretlerini güncelleme hakkını saklı tutar; mevcut ödenmiş dönem boyunca fiyat değişikliği uygulanmaz.</li>
+  </ul>
+
+  <h2>5. Dijital Teslimat ve Hizmetin İfası</h2>
+  <p>
+    Sözleşme konusu hizmet fiziksel gönderim gerektirmeyen çevrimiçi yazılım aboneliğidir. Ödemenin onaylanmasını takiben seçilen paketin bina/daire limitleri ve özellikleri Alıcı’nın {SITE.appUrl} hesabında <strong>anında</strong> aktif hale getirilir.
+  </p>
+
+  <h2>6. Tarafların Hak ve Yükümlülükleri</h2>
+  <ul>
+    <li>Alıcı, hesap giriş bilgilerinin gizliliğinden ve sisteme girdiği bina/sakin verilerinin hukuka uygunluğundan sorumludur.</li>
+    <li>Sağlayıcı, platformun yüksek erişilebilirlik ve güvenlik standartlarıyla çalışması için gerekli teknik özeni gösterir; planlı bakım çalışmaları önceden duyurulur.</li>
+    <li>Abonelik süresi içinde üst pakete geçiş yapılabilir; paket iptali ve iade koşulları <a href="/iptal-ve-iade">İptal, İade ve Cayma Koşulları</a> sayfasında düzenlenmiştir.</li>
+  </ul>
+
+  <h2>7. Mücbir Sebepler</h2>
+  <p>
+    Doğal afet, genel internet/altyapı kesintisi, yasal düzenleme değişiklikleri veya tarafların kontrolü dışındaki mücbir sebeplerden doğan gecikme ve kesintilerden taraflar sorumlu tutulamaz.
+  </p>
+
+  <h2>8. Uyuşmazlıkların Çözümü ve Yürürlük</h2>
+  <p>
+    İşbu Sözleşme Türkiye Cumhuriyeti kanunlarına tabidir. Alıcı’nın tüketici sıfatını taşıdığı hâllerde yasal parasal sınırlar dâhilinde Tüketici Hakem Heyetleri ve Tüketici Mahkemeleri; ticari/mesleki kullanımlarda ise Sağlayıcı merkezinin bulunduğu yer Mahkemeleri ve İcra Daireleri yetkilidir.
+  </p>
+  <p>
+    Alıcı, ödeme ekranında işbu Sözleşme’yi elektronik ortamda onaylayarak ödemeyi tamamladığında Sözleşme’nin tüm koşullarını kabul etmiş sayılır. Sorularınız için <a href={`mailto:${SITE.company.email}`}>{SITE.company.email}</a> üzerinden ulaşabilirsiniz.
+  </p>
+</LegalLayout>

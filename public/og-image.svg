@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="0%" r="75%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#07100c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cardBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0e1b15"/>
+      <stop offset="100%" stop-color="#0b1410"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#07100c"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <g opacity="0.12" stroke="#10b981" stroke-width="1">
+    <path d="M0 105H1200M0 210H1200M0 315H1200M0 420H1200M0 525H1200"/>
+    <path d="M150 0V630M300 0V630M450 0V630M600 0V630M750 0V630M900 0V630M1050 0V630"/>
+  </g>
+  <rect x="64" y="64" width="1072" height="502" rx="28" fill="url(#cardBg)" stroke="#10b981" stroke-opacity="0.24" stroke-width="2"/>
+  <rect x="112" y="116" width="56" height="56" rx="14" fill="#07100c" stroke="#10b981" stroke-opacity="0.4" stroke-width="2"/>
+  <path d="M127 156V137.5L140 130L153 137.5V156" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M123 156H157" stroke="#34d399" stroke-width="2.5" stroke-linecap="round"/>
+  <rect x="134" y="139" width="4" height="4" rx="0.8" fill="#34d399"/>
+  <rect x="142" y="139" width="4" height="4" rx="0.8" fill="#34d399"/>
+  <rect x="134" y="146" width="4" height="4" rx="0.8" fill="#10b981"/>
+  <rect x="142" y="146" width="4" height="4" rx="0.8" fill="#10b981"/>
+  <text x="188" y="154" fill="#ecfdf5" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="700" letter-spacing="-0.02em">AgyProp</text>
+  <rect x="112" y="206" width="330" height="38" rx="19" fill="#10b981" fill-opacity="0.14" stroke="#10b981" stroke-opacity="0.35"/>
+  <text x="134" y="231" fill="#34d399" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600">14 Gün Ücretsiz · Kredi Kartı Gerekmez</text>
+  <text x="112" y="318" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="800" letter-spacing="-0.03em">Apartman ve Site Yönetimi</text>
+  <text x="112" y="384" fill="#10b981" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="800" letter-spacing="-0.03em">Tek Panelde, Şeffaf ve Hızlı.</text>
+  <text x="112" y="446" fill="#9fb5aa" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="400">Otomatik FIFO tahsilat · Tek tıkla A5 PDF makbuz · KVKK uyumlu pano icmali</text>
+  <text x="112" y="514" fill="#6ee7b7" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="600">melihcanaz.tr</text>
+</svg>

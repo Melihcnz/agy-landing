@@ -1,0 +1,53 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { SITE } from '../config/site';
+---
+
+<LegalLayout
+  title="Gizlilik ve Çerez Politikası"
+  description="AgyProp (melihcanaz.tr ve yonetim.melihcanaz.tr) gizlilik ilkeleri, veri güvenliği standartları ve çerez kullanım politikası."
+  summary="AgyProp tanıtım sitesi ve yönetim uygulamasını ziyaret ettiğinizde hangi verilerin toplandığını, nasıl korunduğunu ve çerez tercihlerinizi açıklar."
+  canonicalPath="/gizlilik-politikasi"
+>
+  <h2>1. Kapsam ve Amaç</h2>
+  <p>
+    Bu Gizlilik ve Çerez Politikası, <strong>{SITE.company.legalName}</strong> tarafından işletilen <strong>{SITE.brandName}</strong> tanıtım sitesi ({SITE.siteUrl}) ve web uygulaması ({SITE.appUrl}) kullanıcılarının gizliliğini korumaya yönelik esasları belirler.
+  </p>
+
+  <h2>2. Toplanan Bilgiler</h2>
+  <ul>
+    <li><strong>Ziyaret Verileri:</strong> Tanıtım sitesini ziyaret ettiğinizde, sayfa performansı ve güvenliği için yalnızca anonimleştirilmiş erişim kayıtları ve temel teknik başlıklar işlenir.</li>
+    <li><strong>Hesap ve Kullanım Verileri:</strong> Yönetim paneline kayıt olduğunuzda sağladığınız ad-soyad, e-posta, bina/daire tanımlamaları ve yüklediğiniz belgeler yalnızca hizmetin sunulması amacıyla işlenir.</li>
+    <li><strong>Ödeme Bilgileri:</strong> Kredi kartı ve banka kartı bilgileriniz doğrudan PCI-DSS uyumlu ödeme kuruluşu altyapısında işlenir; {SITE.brandName} sunucularında hiçbir kart numarası veya CVV bilgisi saklanmaz.</li>
+  </ul>
+
+  <h2>3. Çerezler (Cookies) ve Analitik</h2>
+  <p>
+    {SITE.brandName} gizlilik odaklı bir mimari kullanır ve reklam/hedefleme amaçlı üçüncü taraf takip çerezleri yerleştirmez.
+  </p>
+  <ul>
+    <li><strong>Zorunlu Oturum ve Güvenlik Çerezleri:</strong> {SITE.appUrl} üzerinde oturum açma, CSRF koruması ve çoklu bina oturum yönetimi için zorunlu teknik çerezler kullanılır. Bu çerezler olmadan uygulama çalışamaz.</li>
+    <li><strong>Gizlilik Odaklı Web Analizi:</strong> Tanıtım sitemizde sayfa hızını ve erişilebilirliği ölçmek amacıyla çerez bırakmayan Cloudflare Web Analytics kullanılabilir. Bu araç kişisel veri veya çapraz site profili oluşturmaz.</li>
+  </ul>
+  <p>
+    Tarayıcı ayarlarınız üzerinden çerezleri dilediğiniz zaman silebilir veya engelleyebilirsiniz; ancak zorunlu çerezlerin engellenmesi yönetim paneline giriş yapılmasını kısıtlayabilir.
+  </p>
+
+  <h2>4. Veri Güvenliği Önlemleri</h2>
+  <ul>
+    <li>Tüm veri trafiği TLS/HTTPS şifrelemesi ve HSTS güvenlik politikaları ile korunur.</li>
+    <li>Bina ve site verileri çoklu kiracı (multi-tenant) izolasyonu ve rol bazlı erişim denetimi ile birbirinden ayrılır.</li>
+    <li>Yüklenen fatura, dekont ve karar defteri belgeleri Cloudflare R2 üzerinde erişim kontrollü olarak saklanır.</li>
+    <li>Kritik finansal ve yönetimsel işlemler değiştirilemez zaman damgalı denetim kayıtlarında tutulur.</li>
+  </ul>
+
+  <h2>5. Üçüncü Taraf Bağlantılar ve Altyapı</h2>
+  <p>
+    Hizmetin kesintisiz çalışması için Cloudflare (CDN, DNS, Pages, R2 depolama), lisanslı ödeme kuruluşları (PayTR / iyzico) ve işlem e-postası servis sağlayıcıları gibi güvenilir teknik iş ortaklarından yararlanılabilir.
+  </p>
+
+  <h2>6. Politika Güncellemeleri ve İletişim</h2>
+  <p>
+    Bu politika yasal düzenlemeler veya teknik iyileştirmeler doğrultusunda güncellenebilir. Güncel metin her zaman <a href="/gizlilik-politikasi">{SITE.siteUrl}/gizlilik-politikasi</a> adresinde yayınlanır. Gizlilikle ilgili tüm sorularınız için <a href={`mailto:${SITE.company.email}`}>{SITE.company.email}</a> adresinden bizimle iletişime geçebilirsiniz.
+  </p>
+</LegalLayout>

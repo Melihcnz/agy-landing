@@ -1,0 +1,74 @@
+---
+const faqs = [
+  {
+    question: '14 günlük ücretsiz deneme için kredi kartı gerekli mi?',
+    answer:
+      'Hayır. E-posta adresinizle 1 dakikada hesabınızı açıp kredi kartı bilgisi girmeden 14 gün boyunca tüm özellikleri gerçek binalarınızla test edebilirsiniz. Deneme sonunda memnun kalırsanız dilediğiniz pakete geçebilirsiniz.',
+  },
+  {
+    question: 'Otomatik FIFO mahsup tam olarak nasıl çalışır?',
+    answer:
+      'Bir daireden toplu veya kısmi ödeme geldiğinde AgyProp tutarı en eski açık aidat döneminden başlayarak sırayla borçlara dağıtır. Hangi dönemin tamamen kapandığı, hangi dönemden ne kadar bakiye kaldığı otomatik hesaplanır ve denetim kaydına işlenir.',
+  },
+  {
+    question: 'KVKK maskeli pano icmali ne işe yarar?',
+    answer:
+      'Apartman girişindeki duyuru panosuna borç-alacak listesi asarken sakinlerin açık ad-soyad bilgilerini paylaşmak KVKK açısından risk oluşturur. AgyProp tek tıkla "A*** Y*****" biçiminde maskelenmiş, yazıcıya hazır pano icmali oluşturur.',
+  },
+  {
+    question: 'Belgelerimiz ve makbuzlarımız nerede saklanıyor?',
+    answer:
+      'Yüklediğiniz fatura, karar defteri, sözleşme ve sakin dekontları şifreli bağlantı üzerinden Cloudflare R2 nesne depolama arşivinde saklanır. İstediğiniz zaman tarihe veya binaya göre arayıp indirebilirsiniz.',
+  },
+  {
+    question: 'Birden fazla apartman veya siteyi tek hesaptan yönetebilir miyim?',
+    answer:
+      'Evet. Starter, Profesyonel ve Kurumsal paketlerimiz çoklu bina yönetimi için tasarlanmıştır. Her binanın kasası, aidat planı, sakin listesi ve belgeleri birbirinden tamamen izole tutulur; tek menüden binalar arası anında geçiş yapabilirsiniz.',
+  },
+  {
+    question: 'Paketimi sonradan yükseltebilir veya aboneliğimi iptal edebilir miyim?',
+    answer:
+      'Elbette. Yeni bina eklediğinizde üst pakete anında geçebilirsiniz. Aylık aboneliklerde taahhüt yoktur; dilediğiniz zaman aboneliğinizi iptal edebilir, mevcut fatura dönemi sonuna kadar paneli kullanmaya devam edebilirsiniz.',
+  },
+] as const;
+---
+
+<section id="sss" class="py-20 sm:py-24 border-t border-emerald-500/12 bg-[#09120e] scroll-mt-20">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <span class="inline-flex items-center rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-300">
+        Sıkça Sorulan Sorular
+      </span>
+      <h2 class="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-white">
+        Aklınızdaki sorulara net yanıtlar.
+      </h2>
+    </div>
+
+    <div class="mt-12 space-y-3.5">
+      {
+        faqs.map((faq, idx) => (
+          <details
+            class="group surface-card rounded-2xl open:border-emerald-500/35 transition-colors"
+            open={idx === 0}
+          >
+            <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-5 text-left text-sm sm:text-base font-semibold text-white select-none">
+              <span>{faq.question}</span>
+              <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-emerald-500/20 bg-[#07100c] text-emerald-400 transition-transform duration-200 group-open:rotate-180">
+                <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </span>
+            </summary>
+            <div class="px-6 pb-5 text-sm leading-relaxed text-slate-300/90 border-t border-emerald-500/10 pt-4">
+              {faq.answer}
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

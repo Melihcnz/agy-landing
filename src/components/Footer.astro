@@ -1,0 +1,105 @@
+---
+import { SITE } from '../config/site';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-emerald-500/12 bg-[#050c09]">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
+      <!-- Brand Summary -->
+      <div class="lg:col-span-4 space-y-4">
+        <a href="/" class="inline-flex items-center gap-2.5">
+          <span class="flex h-9 w-9 items-center justify-center rounded-xl border border-emerald-500/30 bg-[#0b1410]">
+            <svg class="h-5 w-5" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <path d="M16 48V24.5L32 15L48 24.5V48" stroke="#10b981" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M12 48H52" stroke="#34d399" stroke-width="3.5" stroke-linecap="round" />
+              <rect x="25" y="26" width="5" height="5" rx="1" fill="#34d399" />
+              <rect x="34" y="26" width="5" height="5" rx="1" fill="#34d399" />
+              <rect x="25" y="34" width="5" height="5" rx="1" fill="#10b981" />
+              <rect x="34" y="34" width="5" height="5" rx="1" fill="#10b981" />
+            </svg>
+          </span>
+          <span class="font-display text-lg font-bold tracking-tight text-white">
+            {SITE.brandName}
+          </span>
+        </a>
+        <p class="text-sm text-slate-400 leading-relaxed max-w-sm">
+          Apartman ve site yöneticileri için şeffaf aidat takibi, otomatik FIFO mahsup, A5 PDF makbuz ve KVKK uyumlu bulut yönetim platformu.
+        </p>
+        <div class="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-[#0b1410] px-3 py-1 text-xs text-emerald-300/90">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+          <span>Uygulama: yonetim.melihcanaz.tr</span>
+        </div>
+      </div>
+
+      <!-- Ürün -->
+      <div class="lg:col-span-2">
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-200">Ürün</h3>
+        <ul class="mt-4 space-y-2.5 text-sm text-slate-400">
+          {
+            SITE.navigation.map((item) => (
+              <li>
+                <a href={item.href} class="hover:text-emerald-400 transition-colors">
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+          <li>
+            <a href={SITE.loginUrl} class="hover:text-emerald-400 transition-colors">
+              Panele Giriş Yap
+            </a>
+          </li>
+          <li>
+            <a href={SITE.registerUrl} class="hover:text-emerald-400 transition-colors">
+              14 Gün Ücretsiz Dene
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Yasal -->
+      <div class="lg:col-span-3">
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-200">Yasal &amp; Uyum</h3>
+        <ul class="mt-4 space-y-2.5 text-sm text-slate-400">
+          {
+            SITE.legalLinks.map((item) => (
+              <li>
+                <a href={item.href} class="hover:text-emerald-400 transition-colors">
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- İletişim -->
+      <div class="lg:col-span-3">
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-200">İletişim</h3>
+        <ul class="mt-4 space-y-2.5 text-sm text-slate-400">
+          <li>
+            <a
+              href={`mailto:${SITE.company.email}`}
+              class="text-emerald-400 hover:text-emerald-300 transition-colors"
+            >
+              {SITE.company.email}
+            </a>
+          </li>
+          <li class="text-xs text-slate-400 leading-relaxed">
+            {SITE.company.legalName}
+          </li>
+          <li class="text-xs text-slate-500 leading-relaxed">
+            {SITE.company.address}
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-6 border-t border-emerald-500/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <p>&copy; {currentYear} {SITE.brandName}. Tüm hakları saklıdır.</p>
+      <p>Cloudflare altyapısı ile hızlı, şifreli ve kesintisiz erişim.</p>
+    </div>
+  </div>
+</footer>

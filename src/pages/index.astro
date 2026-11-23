@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+import FeaturesBento from '../components/FeaturesBento.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Pricing from '../components/Pricing.astro';
+import Faq from '../components/Faq.astro';
+import FinalCta from '../components/FinalCta.astro';
+import { SITE } from '../config/site';
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE.brandName,
+    url: SITE.siteUrl,
+    logo: `${SITE.siteUrl}/favicon.svg`,
+    email: SITE.company.email,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: `${SITE.brandName} — Apartman & Site Yönetim Yazılımı`,
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    inLanguage: 'tr',
+    url: SITE.siteUrl,
+    description: SITE.seo.defaultDescription,
+    offers: {
+      '@type': 'AggregateOffer',
+      priceCurrency: 'TRY',
+      lowPrice: '499',
+      highPrice: '7990',
+      offerCount: '4',
+    },
+  },
+];
+---
+
+<BaseLayout
+  title={SITE.seo.defaultTitle}
+  description={SITE.seo.defaultDescription}
+  canonicalPath="/"
+  jsonLd={structuredData}
+>
+  <Hero />
+  <TrustStrip />
+  <FeaturesBento />
+  <HowItWorks />
+  <Pricing />
+  <Faq />
+  <FinalCta />
+</BaseLayout>

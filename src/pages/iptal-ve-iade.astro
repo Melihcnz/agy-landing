@@ -1,0 +1,54 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { SITE } from '../config/site';
+---
+
+<LegalLayout
+  title="İptal, İade ve Cayma Koşulları"
+  description="AgyProp abonelik iptali, ücretsiz deneme, dijital hizmetlerde cayma hakkı ve ücret iadesi prosedürü."
+  summary="14 günlük ücretsiz deneme, abonelik iptali, dijital hizmetlerde cayma hakkı istisnası ve iade taleplerinin işlenme süreçleri."
+  canonicalPath="/iptal-ve-iade"
+>
+  <h2>1. 14 Günlük Ücretsiz Deneme Süreci</h2>
+  <p>
+    <strong>{SITE.brandName}</strong> platformuna yeni kaydolan tüm kullanıcılar, herhangi bir ödeme bilgisi veya kredi kartı tanımlamadan <strong>{SITE.defaultTrialDays} gün boyunca ücretsiz</strong> olarak yazılımı deneyebilir. Deneme süresi sonunda ücretli bir pakete geçmediğiniz takdirde tarafınızdan hiçbir ücret tahsil edilmez.
+  </p>
+
+  <h2>2. Abonelik İptali ve Otomatik Yenileme</h2>
+  <ul>
+    <li>Aylık veya yıllık aboneliğinizi dilediğiniz zaman yönetim panelindeki <strong>Abonelik / Faturalandırma</strong> ayarlarından veya <a href={`mailto:${SITE.company.supportEmail}`}>{SITE.company.supportEmail}</a> adresine e-posta göndererek iptal edebilirsiniz.</li>
+    <li>İptal talebinizle birlikte sonraki faturalandırma dönemi için otomatik yenileme derhal durdurulur; herhangi bir cayma bedeli veya ceza ücreti uygulanmaz.</li>
+    <li>Mevcut ödemesi yapılmış abonelik döneminin son gününe kadar hesabınıza, raporlarınıza ve belgelerinize tam erişiminiz devam eder.</li>
+  </ul>
+
+  <h2>3. Elektronik Ortamda Anında İfa Edilen Hizmetler ve Cayma Hakkı</h2>
+  <p>
+    6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği’nin 15. maddesinin (ğ) bendi uyarınca; <strong>elektronik ortamda anında ifa edilen hizmetler veya tüketiciye anında teslim edilen gayrimaddi mallara ilişkin sözleşmelerde</strong> hizmetin ifasına Alıcı’nın onayı ile başlanması hâlinde yasal cayma hakkı kullanılamaz.
+  </p>
+  <p>
+    Alıcı, {SITE.defaultTrialDays} günlük ücretsiz deneme imkânından yararlandıktan sonra ücretli aboneliği başlattığında yazılım hizmetinin hesabında anında aktive edildiğini kabul eder. Bu nedenle başlamış ve kullanıma açılmış döneme ait kısmi kullanım iadesi standart olarak uygulanmaz.
+  </p>
+
+  <h2>4. Hatalı, Mükerrer Tahsilat ve İstisnai İade Talepleri</h2>
+  <p>
+    Aşağıdaki durumlarda ödenen tutarın tamamı veya ilgili kısmı iade edilir:
+  </p>
+  <ul>
+    <li>Teknik bir aksaklık nedeniyle aynı fatura dönemi için <strong>mükerrer (çift) tahsilat</strong> yapılması,</li>
+    <li>Abonelik iptali zamanında yapıldığı hâlde sistemsel bir hata sonucu yeni dönem ücretinin çekilmesi,</li>
+    <li>Hizmetin Sağlayıcı kaynaklı ağır ve giderilemeyen bir teknik arıza nedeniyle makul süre boyunca hiç sunulamaması.</li>
+  </ul>
+
+  <h2>5. İade Süreci ve Süreleri</h2>
+  <ol>
+    <li>İade talebinizi hesap e-posta adresiniz, işlem tarihi ve varsa fatura/işlem numaranızla birlikte <a href={`mailto:${SITE.company.supportEmail}`}>{SITE.company.supportEmail}</a> adresine iletin.</li>
+    <li>Talebiniz en geç <strong>3 iş günü</strong> içinde incelenir ve sonucu e-posta ile bildirilir.</li>
+    <li>Onaylanan iadeler, ödemenin yapıldığı sanal POS / ödeme kuruluşu (PayTR / iyzico) aracılığıyla yalnızca ödemenin gerçekleştirildiği aynı kredi veya banka kartına iade edilir.</li>
+    <li>İadenin bankanız tarafından kart ekstrenize yansıtılması, bankanızın işlem süreçlerine bağlı olarak ortalama <strong>3 ila 10 iş günü</strong> sürebilir.</li>
+  </ol>
+
+  <h2>6. Veri Dışa Aktarımı</h2>
+  <p>
+    Aboneliğinizi iptal etmeden önce veya mevcut döneminiz sona ermeden önce panel içerisindeki A5 PDF makbuzlarınızı, icmal raporlarınızı ve R2 arşivindeki belgelerinizi bilgisayarınıza indirebilirsiniz. Destek için her zaman <a href={`mailto:${SITE.company.supportEmail}`}>{SITE.company.supportEmail}</a> adresinden bize ulaşabilirsiniz.
+  </p>
+</LegalLayout>

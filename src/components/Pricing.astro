@@ -1,0 +1,141 @@
+---
+import { buildRegisterUrl, type BillingCycle } from '../config/site';
+import {
+  FALLBACK_PLANS_DATA,
+  formatLimitLabel,
+  getPlanDisplayMetrics,
+} from '../config/pricing';
+
+const initialCycle: BillingCycle = 'MONTHLY';
+const { plans, trialDays } = FALLBACK_PLANS_DATA;
+---
+
+<section id="fiyatlandirma" class="py-20 sm:py-28 scroll-mt-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Başlık & Aylık/Yıllık Geçiş Anahtarı -->
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="inline-flex items-center rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-300">
+        Şeffaf Fiyatlandırma
+      </span>
+      <h2 class="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-white">
+        Bina sayınıza göre ölçeklenen esnek paketler.
+      </h2>
+      <p class="mt-4 text-base text-slate-400">
+        Tüm paketlerde <span data-trial-days>{trialDays}</span> gün boyunca tüm özellikleri kredi kartı olmadan deneyin.
+      </p>
+
+      <!-- Aylık / Yıllık (2 Ay Ücretsiz) Anahtarı -->
+      <div class="mt-8 inline-flex items-center rounded-2xl border border-emerald-500/20 bg-[#0b1410] p-1.5" role="group" aria-label="Faturalandırma dönemi">
+        <button
+          type="button"
+          data-cycle-btn="MONTHLY"
+          aria-pressed="true"
+          class="rounded-xl bg-emerald-500 px-5 py-2 text-sm font-semibold text-[#04110b] shadow-sm transition-colors cursor-pointer"
+        >
+          Aylık
+        </button>
+        <button
+          type="button"
+          data-cycle-btn="YEARLY"
+          aria-pressed="false"
+          class="inline-flex items-center gap-2 rounded-xl px-5 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors cursor-pointer"
+        >
+          <span>Yıllık</span>
+          <span class="rounded-full bg-emerald-500/20 border border-emerald-400/35 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">
+            2 Ay Ücretsiz
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 4 Paket Kartı (Build anında fallback ile SSR render, açılışta canlı API ile senkronize) -->
+    <div id="pricing-grid" class="mt-14 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch">
+      {
+        plans.map((plan) => {
+          const metrics = getPlanDisplayMetrics(plan, initialCycle);
+          const isRecommended = plan.isRecommended;
+          return (
+            <article
+              data-plan-code={plan.code}
+              class:list={[
+                'relative flex flex-col rounded-2xl p-6 sm:p-7',
+                isRecommended
+                  ? 'border border-emerald-400/50 bg-gradient-to-b from-[#10241b] to-[#0b1410] shadow-2xl shadow-emerald-950/70 ring-1 ring-emerald-400/20'
+                  : 'surface-card surface-card-hover',
+              ]}
+            >
+              {isRecommended && (
+                <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                  <span class="inline-flex items-center rounded-full bg-emerald-500 px-3.5 py-1 text-xs font-bold tracking-wide text-[#04110b] shadow-lg shadow-emerald-500/30">
+                    Önerilen
+                  </span>
+                </div>
+              )}
+
+              <div>
+                <h3 class="text-lg font-bold text-white">{plan.name}</h3>
+                <p class="mt-1.5 text-xs leading-relaxed text-slate-400 min-h-[2.25rem]">
+                  {plan.tagline}
+                </p>
+                <div class="mt-4 inline-flex items-center rounded-lg border border-emerald-500/20 bg-[#07100c] px-2.5 py-1 text-xs font-medium text-emerald-300">
+                  {formatLimitLabel(plan.maxBuildings, plan.maxUnits)}
+                </div>
+              </div>
+
+              <div class="mt-6 pb-6 border-b border-emerald-500/12">
+                <div class="flex items-baseline gap-1.5 flex-wrap">
+                  <span class="text-xl font-bold text-emerald-400">{metrics.symbol}</span>
+                  <span class="font-display text-4xl font-extrabold tracking-tight text-white tabular-nums">
+                    {metrics.primaryAmount}
+                  </span>
+                  <span class="text-sm font-medium text-slate-400">{metrics.periodSuffix}</span>
+                </div>
+                <div class="mt-2 text-xs text-slate-400">
+                  {metrics.billingSubtext}
+                </div>
+              </div>
+
+              <ul class="mt-6 space-y-3 flex-1">
+                {plan.features.map((feature) => (
+                  <li class="flex items-start gap-2.5 text-sm text-slate-300">
+                    <svg class="h-4 w-4 shrink-0 text-emerald-400 mt-0.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path
+                        fill-rule="evenodd"
+                        d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div class="mt-8">
+                <a
+                  href={buildRegisterUrl(plan.code, initialCycle)}
+                  class:list={[
+                    'inline-flex w-full items-center justify-center rounded-xl px-4 py-3 text-sm font-semibold transition-colors',
+                    isRecommended
+                      ? 'bg-emerald-500 text-[#04110b] shadow-lg shadow-emerald-500/20 hover:bg-emerald-400'
+                      : 'border border-emerald-500/25 bg-[#07100c] text-white hover:border-emerald-400/55 hover:bg-emerald-500/10',
+                  ]}
+                >
+                  {trialDays} Gün Ücretsiz Başla
+                </a>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+
+    <p class="mt-8 text-center text-xs text-slate-400">
+      Tüm paketlerde <span data-trial-days>{trialDays}</span> gün ücretsiz deneme · Kredi kartı gerekmez · İstediğiniz zaman paket yükseltin veya iptal edin.
+    </p>
+  </div>
+</section>
+
+<script>
+  import { initPricingSection } from '../scripts/pricing';
+  initPricingSection();
+</script>

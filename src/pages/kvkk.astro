@@ -1,0 +1,76 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { SITE } from '../config/site';
+---
+
+<LegalLayout
+  title="KVKK Aydınlatma Metni"
+  description="AgyProp Apartman ve Site Yönetim Platformu 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında aydınlatma metni."
+  summary="6698 sayılı Kişisel Verilerin Korunması Kanunu ('KVKK') uyarınca kişisel verilerinizin işlenmesine, saklanmasına ve haklarınıza ilişkin aydınlatma metnidir."
+  canonicalPath="/kvkk"
+>
+  <h2>1. Veri Sorumlusunun Kimliği</h2>
+  <p>
+    6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) uyarınca, <strong>{SITE.brandName}</strong> ({SITE.siteUrl} ve {SITE.appUrl}) platformu kapsamında toplanan kişisel verileriniz, veri sorumlusu sıfatıyla <strong>{SITE.company.legalName}</strong> (“Şirket”) tarafından aşağıda açıklanan kapsamda işlenebilecektir.
+  </p>
+  <p>
+    Kurumsal ünvan, vergi kimlik, adres ve iletişim bilgileri bu sayfadaki “Hizmet Sağlayıcı Bilgileri” bölümünde yer almaktadır. Apartman ve site yöneticileri tarafından sisteme kaydedilen kat maliki/sakin verileri bakımından ilgili bina/site yönetimi “Veri Sorumlusu”, {SITE.brandName} ise teknik altyapıyı sağlayan “Veri İşleyen” sıfatını taşır.
+  </p>
+
+  <h2>2. İşlenen Kişisel Veri Kategorileri</h2>
+  <ul>
+    <li><strong>Kimlik ve Hesap Bilgileri:</strong> Ad, soyad, kullanıcı hesap bilgileri, rol/yetki kayıtları.</li>
+    <li><strong>İletişim Bilgileri:</strong> E-posta adresi, telefon numarası, fatura ve tebligat adresi.</li>
+    <li><strong>Finans ve Abonelik Bilgileri:</strong> Abonelik paketi, fatura bilgileri, vergi numarası/dairesi, ödeme onay kayıtları (kart bilgileri ödeme kuruluşu nezdinde işlenir, sunucularımızda saklanmaz).</li>
+    <li><strong>İşlem Güvenliği ve Denetim Kayıtları:</strong> IP adresi, oturum kayıtları, zaman damgalı işlem/denetim logları, hata kayıtları.</li>
+    <li><strong>Belge ve İçerik Verileri:</strong> Kullanıcılar tarafından platforma yüklenen dekont, fatura, karar defteri ve arıza/bakım kayıtları.</li>
+  </ul>
+
+  <h2>3. Kişisel Verilerin İşlenme Amaçları</h2>
+  <ul>
+    <li>{SITE.brandName} SaaS abonelik hesabının oluşturulması, 14 günlük deneme ve abonelik hizmetlerinin sunulması,</li>
+    <li>Ödeme, faturalandırma, tahsilat takibi ve muhasebe süreçlerinin yürütülmesi,</li>
+    <li>Sakin dekont bildirimleri, aidat hatırlatmaları ve sistem güvenlik e-postalarının iletilmesi,</li>
+    <li>Bilgi güvenliği süreçlerinin, denetim kayıtlarının ve yetkisiz erişim önlemlerinin sağlanması,</li>
+    <li>Kullanıcı destek taleplerinin yanıtlanması ve mevzuattan kaynaklanan yasal yükümlülüklerin yerine getirilmesi.</li>
+  </ul>
+
+  <h2>4. İşlemenin Hukuki Sebepleri</h2>
+  <p>
+    Kişisel verileriniz KVKK’nın 5. maddesinin 2. fıkrasında düzenlenen; <strong>sözleşmenin kurulması veya ifasıyla doğrudan doğruya ilgili olması</strong>, <strong>kanunlarda açıkça öngörülmesi</strong>, <strong>veri sorumlusunun hukuki yükümlülüğünü yerine getirebilmesi için zorunlu olması</strong> ve <strong>ilgili kişinin temel hak ve özgürlüklerine zarar vermemek kaydıyla veri sorumlusunun meşru menfaatleri için zorunlu olması</strong> hukuki sebeplerine dayanılarak elektronik ortamda işlenmektedir.
+  </p>
+
+  <h2>5. Kişisel Verilerin Aktarılması</h2>
+  <p>
+    Kişisel verileriniz, yalnızca hizmetin ifası ve yasal yükümlülüklerin yerine getirilmesi amacıyla sınırlı olmak kaydıyla;
+  </p>
+  <ul>
+    <li>Ödeme işlemlerinin güvenli biçimde gerçekleştirilmesi için BDDK lisanslı ödeme kuruluşlarına (ör. PayTR / iyzico),</li>
+    <li>Bulut barındırma, nesne depolama (Cloudflare R2) ve işlem e-postası gönderim altyapı sağlayıcılarına,</li>
+    <li>Mali müşavirlik, e-fatura entegratörleri ve hukuken yetkili kamu kurum ve kuruluşlarına</li>
+  </ul>
+  <p>
+    KVKK’nın 8. ve 9. maddelerinde öngörülen güvenlik tedbirleri çerçevesinde aktarılabilir.
+  </p>
+
+  <h2>6. Saklama Süresi ve Veri Güvenliği</h2>
+  <p>
+    Kişisel verileriniz, abonelik sözleşmesi devam ettiği sürece ve ilgili mevzuatta (Vergi Usul Kanunu, Türk Ticaret Kanunu vb.) öngörülen zamanaşımı ve saklama süreleri boyunca muhafaza edilir. Süre sonunda veriler KVKK’ya uygun olarak silinir, yok edilir veya anonim hale getirilir. Platform, apartman ilan panolarında kullanılmak üzere sakin adlarını maskeleyen (KVKK maskeli pano icmali) teknik koruma araçları sunar.
+  </p>
+
+  <h2>7. İlgili Kişinin KVKK Madde 11 Kapsamındaki Hakları</h2>
+  <p>KVKK’nın 11. maddesi uyarınca veri sorumlusu olarak Şirketimize başvurarak:</p>
+  <ul>
+    <li>Kişisel verilerinizin işlenip işlenmediğini öğrenme ve işlenmişse buna ilişkin bilgi talep etme,</li>
+    <li>İşlenme amacını ve bunların amacına uygun kullanılıp kullanılmadığını öğrenme,</li>
+    <li>Yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme,</li>
+    <li>Eksik veya yanlış işlenmiş olması hâlinde düzeltilmesini ve şartları oluştuğunda silinmesini veya yok edilmesini isteme,</li>
+    <li>İşlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi suretiyle aleyhinize bir sonucun ortaya çıkmasına itiraz etme ve kanuna aykırı işleme sebebiyle zarara uğramanız hâlinde zararın giderilmesini talep etme</li>
+  </ul>
+  <p>haklarına sahipsiniz.</p>
+
+  <h2>8. Başvuru Yöntemi</h2>
+  <p>
+    Yukarıda sayılan haklarınıza ilişkin taleplerinizi, Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğ uyarınca kimliğinizi tevsik edici bilgilerle birlikte <a href={`mailto:${SITE.company.kvkkEmail}`}>{SITE.company.kvkkEmail}</a> e-posta adresine veya hizmet sağlayıcı adresimize yazılı olarak iletebilirsiniz. Başvurularınız en geç 30 gün içinde ücretsiz olarak sonuçlandırılır.
+  </p>
+</LegalLayout>

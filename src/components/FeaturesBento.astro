@@ -1,0 +1,176 @@
+---
+/**
+ * 5 çekirdek AgyProp modülünü öne çıkaran Bento Grid bölümü.
+ */
+---
+
+<section id="ozellikler" class="py-20 sm:py-28 scroll-mt-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl">
+      <span class="inline-flex items-center rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-300">
+        Özellikler
+      </span>
+      <h2 class="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-white">
+        Yöneticilerin her gün ihtiyaç duyduğu her şey, tek mimaride.
+      </h2>
+      <p class="mt-4 text-base text-slate-400 leading-relaxed">
+        Tahsilattan makbuza, sakin dekont onayından arıza ve belge arşivine kadar tüm apartman süreçlerini hatasız yürütün.
+      </p>
+    </div>
+
+    <!-- Bento Grid -->
+    <div class="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
+      <!-- 1. Aidat & FIFO Tahsilat (Geniş Kart) -->
+      <article class="lg:col-span-7 surface-card surface-card-hover rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+        <div>
+          <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-emerald-500/25 bg-emerald-500/10 text-emerald-400">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3 3 7.5 12 12l9-4.5L12 3ZM3 12l9 4.5 9-4.5M3 16.5 12 21l9-4.5" />
+            </svg>
+          </div>
+          <h3 class="mt-5 text-xl font-bold text-white">Aidat &amp; Otomatik FIFO Tahsilat</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-slate-300/90 max-w-xl">
+            Tek bir ödeme girişiyle geçmiş dönem borçlarını manuel hesaplamaya son verin. AgyProp gelen tutarı <strong class="text-emerald-300 font-medium">First-In, First-Out (FIFO)</strong> kuralıyla en eski açık dönemden başlayarak otomatik mahsup eder; kısmi ödemeleri ve kalan bakiyeyi kuruşu kuruşuna işler.
+          </p>
+        </div>
+
+        <!-- Mini FIFO Görselleştirme -->
+        <div class="mt-6 rounded-xl border border-emerald-500/15 bg-[#07100c] p-4 space-y-2.5">
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-medium text-slate-300">Gelen Ödeme · Daire 12</span>
+            <span class="rounded-md bg-emerald-500/15 px-2 py-0.5 font-semibold text-emerald-300 tabular-nums">
+              + ₺3.500,00
+            </span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1 text-xs">
+            <div class="rounded-lg border border-emerald-500/25 bg-emerald-500/10 px-3 py-2">
+              <div class="flex items-center justify-between">
+                <span class="text-slate-300">Eylül 2026</span>
+                <span class="text-[10px] font-semibold text-emerald-300">KAPANDI</span>
+              </div>
+              <p class="mt-1 font-semibold text-white tabular-nums">₺1.500 / ₺1.500</p>
+            </div>
+            <div class="rounded-lg border border-emerald-500/25 bg-emerald-500/10 px-3 py-2">
+              <div class="flex items-center justify-between">
+                <span class="text-slate-300">Ekim 2026</span>
+                <span class="text-[10px] font-semibold text-emerald-300">KAPANDI</span>
+              </div>
+              <p class="mt-1 font-semibold text-white tabular-nums">₺1.500 / ₺1.500</p>
+            </div>
+            <div class="rounded-lg border border-amber-500/25 bg-amber-500/10 px-3 py-2">
+              <div class="flex items-center justify-between">
+                <span class="text-slate-300">Kasım 2026</span>
+                <span class="text-[10px] font-semibold text-amber-300">KISMİ</span>
+              </div>
+              <p class="mt-1 font-semibold text-white tabular-nums">₺500 / ₺1.500</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. Tek Tıkla A5 PDF Makbuz & KVKK Maskeli Pano İcmali -->
+      <article class="lg:col-span-5 surface-card surface-card-hover rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+        <div>
+          <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-emerald-500/25 bg-emerald-500/10 text-emerald-400">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 3v5h5M9 13h6M9 17h4" />
+            </svg>
+          </div>
+          <h3 class="mt-5 text-xl font-bold text-white">Tek Tıkla A5 PDF Makbuz &amp; KVKK Pano İcmali</h3>
+          <p class="mt-2.5 text-sm leading-relaxed text-slate-300/90">
+            Tahsilat sonrası yazıcıya hazır A5 PDF makbuz üretin. Apartman ilan panosuna asacağınız borç/alacak icmallerini sakin adları KVKK'ya uygun maskelenmiş biçimde tek tıkla indirin.
+          </p>
+        </div>
+
+        <div class="mt-6 rounded-xl border border-emerald-500/15 bg-[#07100c] p-4 space-y-2 text-xs">
+          <div class="flex items-center justify-between border-b border-emerald-500/10 pb-2">
+            <span class="font-semibold text-emerald-300">Pano İcmali (KVKK)</span>
+            <span class="rounded border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-200">
+              A5 PDF Hazır
+            </span>
+          </div>
+          <div class="flex items-center justify-between text-slate-300">
+            <span>Daire 01 · H*** Ö****</span>
+            <span class="text-emerald-400 font-medium tabular-nums">Borç Yok</span>
+          </div>
+          <div class="flex items-center justify-between text-slate-300">
+            <span>Daire 02 · K*** A*****</span>
+            <span class="text-amber-300 font-medium tabular-nums">₺1.575</span>
+          </div>
+          <div class="flex items-center justify-between text-slate-300">
+            <span>Daire 03 · E*** Ç****</span>
+            <span class="text-emerald-400 font-medium tabular-nums">Borç Yok</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. Sakin Dekont & E-posta Otomasyonu -->
+      <article class="lg:col-span-4 surface-card surface-card-hover rounded-2xl p-6 sm:p-7 flex flex-col justify-between">
+        <div>
+          <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-emerald-500/25 bg-emerald-500/10 text-emerald-400">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2.5" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="m4 7 8 6 8-6" />
+            </svg>
+          </div>
+          <h3 class="mt-5 text-lg font-bold text-white">Sakin Dekont &amp; E-posta Otomasyonu</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-300/90">
+            Sakinler banka havalesi dekontlarını panele yükler; siz tek tıkla onayladığınızda tahsilat işlenir ve onay e-postası otomatik gönderilir.
+          </p>
+        </div>
+
+        <div class="mt-5 flex items-center gap-2 text-[11px] font-medium">
+          <span class="rounded-lg border border-emerald-500/20 bg-[#07100c] px-2.5 py-1.5 text-slate-300">Dekont Yükle</span>
+          <span class="text-emerald-500">&rarr;</span>
+          <span class="rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1.5 text-emerald-300">Onayla</span>
+          <span class="text-emerald-500">&rarr;</span>
+          <span class="rounded-lg border border-emerald-500/20 bg-[#07100c] px-2.5 py-1.5 text-slate-300">E-posta</span>
+        </div>
+      </article>
+
+      <!-- 4. Çoklu Bina & Denetim Kayıtları -->
+      <article class="lg:col-span-4 surface-card surface-card-hover rounded-2xl p-6 sm:p-7 flex flex-col justify-between">
+        <div>
+          <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-emerald-500/25 bg-emerald-500/10 text-emerald-400">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V7l7-4 7 4v14M9 11h2M13 11h2M9 15h2M13 15h2" />
+            </svg>
+          </div>
+          <h3 class="mt-5 text-lg font-bold text-white">Çoklu Bina &amp; Denetim Kayıtları</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-300/90">
+            Birden fazla apartman ve siteyi tek hesaptan izole biçimde yönetin. Her tahsilat, düzenleme ve silme işlemi zaman damgalı denetim günlüğüne kaydedilir.
+          </p>
+        </div>
+
+        <div class="mt-5 rounded-xl border border-emerald-500/15 bg-[#07100c] px-3 py-2.5 text-[11px] font-mono text-slate-400">
+          <span class="text-emerald-400">[14:22]</span> Tahsilat onaylandı · <span class="text-slate-200">Blok B / D-09</span>
+        </div>
+      </article>
+
+      <!-- 5. Arıza/Bakım & Belge Arşivi -->
+      <article class="lg:col-span-4 surface-card surface-card-hover rounded-2xl p-6 sm:p-7 flex flex-col justify-between">
+        <div>
+          <div class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-emerald-500/25 bg-emerald-500/10 text-emerald-400">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4l-2.2 2.2-3-3 2.2-2.2Z" />
+            </svg>
+          </div>
+          <h3 class="mt-5 text-lg font-bold text-white">Arıza/Bakım &amp; R2 Belge Arşivi</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-300/90">
+            Asansör bakımı, hidrofor onarımı ve ortak alan taleplerini durum bazlı takip edin. Fatura, sözleşme ve karar defteri taramalarını Cloudflare R2 arşivinde güvenle saklayın.
+          </p>
+        </div>
+
+        <div class="mt-5 flex flex-wrap gap-2 text-[11px]">
+          <span class="rounded-md border border-emerald-500/20 bg-[#07100c] px-2.5 py-1 text-emerald-300">
+            Asansör Bakımı · Planlandı
+          </span>
+          <span class="rounded-md border border-emerald-500/15 bg-[#07100c] px-2.5 py-1 text-slate-300">
+            Karar_2026.pdf
+          </span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

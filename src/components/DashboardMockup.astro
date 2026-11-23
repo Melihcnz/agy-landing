@@ -1,0 +1,144 @@
+---
+/**
+ * Harici görsel gerektirmeyen, tamamen HTML + CSS ile oluşturulmuş
+ * sade AgyProp yönetim paneli önizleme maketi.
+ */
+---
+
+<div class="relative mx-auto w-full max-w-xl lg:max-w-none" aria-label="AgyProp yönetim paneli önizlemesi">
+  <!-- Arka plan yumuşak zümrüt parıltı -->
+  <div
+    class="pointer-events-none absolute -inset-4 rounded-3xl bg-gradient-to-tr from-emerald-500/15 via-emerald-400/5 to-transparent blur-2xl"
+    aria-hidden="true"
+  >
+  </div>
+
+  <!-- Panel Çerçevesi -->
+  <div class="relative overflow-hidden rounded-2xl border border-emerald-500/25 bg-[#0b1410] shadow-2xl shadow-black/60">
+    <!-- Üst Tarayıcı / Uygulama Çubuğu -->
+    <div class="flex items-center justify-between border-b border-emerald-500/15 bg-[#07100c] px-4 py-3">
+      <div class="flex items-center gap-2">
+        <span class="h-2.5 w-2.5 rounded-full bg-emerald-500/50"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-emerald-500/30"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-emerald-500/20"></span>
+        <span class="ml-2 rounded-md border border-emerald-500/15 bg-[#0b1410] px-2.5 py-0.5 text-[11px] font-medium text-slate-400">
+          yonetim.melihcanaz.tr
+        </span>
+      </div>
+      <div class="flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-0.5 text-[11px] font-medium text-emerald-300">
+        <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+        <span>Çamlık Konutları · 48 Daire</span>
+      </div>
+    </div>
+
+    <!-- İçerik Gövdesi -->
+    <div class="p-4 sm:p-5 space-y-4">
+      <!-- KPI Özet Kartları -->
+      <div class="grid grid-cols-3 gap-2.5 sm:gap-3">
+        <div class="rounded-xl border border-emerald-500/15 bg-[#07100c]/90 p-3">
+          <p class="text-[11px] text-slate-400">Kasım Tahsilat</p>
+          <p class="mt-1 text-base sm:text-lg font-bold tracking-tight text-white tabular-nums">
+            ₺142.800
+          </p>
+          <div class="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-emerald-950">
+            <div class="h-full w-[94%] rounded-full bg-emerald-500"></div>
+          </div>
+          <p class="mt-1 text-[10px] font-medium text-emerald-400 tabular-nums">%94,2 tahsil edildi</p>
+        </div>
+
+        <div class="rounded-xl border border-emerald-500/15 bg-[#07100c]/90 p-3">
+          <p class="text-[11px] text-slate-400">Açık Bakiye</p>
+          <p class="mt-1 text-base sm:text-lg font-bold tracking-tight text-white tabular-nums">
+            ₺8.800
+          </p>
+          <p class="mt-2 inline-flex items-center rounded-md bg-amber-500/10 px-1.5 py-0.5 text-[10px] font-medium text-amber-300">
+            4 Daire · Hatırlatıldı
+          </p>
+        </div>
+
+        <div class="rounded-xl border border-emerald-500/15 bg-[#07100c]/90 p-3">
+          <p class="text-[11px] text-slate-400">Sakin Dekont</p>
+          <p class="mt-1 text-base sm:text-lg font-bold tracking-tight text-emerald-300 tabular-nums">
+            3 Yeni
+          </p>
+          <p class="mt-2 inline-flex items-center rounded-md bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-medium text-emerald-300">
+            Tek tıkla onayla
+          </p>
+        </div>
+      </div>
+
+      <!-- Son Tahsilatlar & FIFO Tablosu -->
+      <div class="rounded-xl border border-emerald-500/15 bg-[#07100c]/85 overflow-hidden">
+        <div class="flex items-center justify-between border-b border-emerald-500/12 px-3.5 py-2.5">
+          <span class="text-xs font-semibold text-slate-200">Son Tahsilatlar &amp; FIFO Mahsup</span>
+          <span class="text-[11px] font-medium text-emerald-400">KVKK Maskeli Görünüm</span>
+        </div>
+
+        <div class="divide-y divide-emerald-500/10 text-xs">
+          <div class="flex items-center justify-between gap-2 px-3.5 py-2.5">
+            <div class="min-w-0">
+              <div class="flex items-center gap-2">
+                <span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-300">D-12</span>
+                <span class="font-medium text-slate-100 truncate">A*** Y*****</span>
+              </div>
+              <p class="mt-0.5 text-[11px] text-slate-400">FIFO · Ekim + Kasım borcu kapandı</p>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+              <span class="font-semibold text-white tabular-nums">₺3.150</span>
+              <span class="rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-300">
+                A5 PDF
+              </span>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between gap-2 px-3.5 py-2.5">
+            <div class="min-w-0">
+              <div class="flex items-center gap-2">
+                <span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-300">D-07</span>
+                <span class="font-medium text-slate-100 truncate">M*** K***</span>
+              </div>
+              <p class="mt-0.5 text-[11px] text-slate-400">Dekont onaylandı · Makbuz iletildi</p>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+              <span class="font-semibold text-white tabular-nums">₺1.575</span>
+              <span class="rounded-md border border-emerald-500/20 bg-[#0b1410] px-2 py-0.5 text-[10px] font-medium text-slate-300">
+                E-posta ✓
+              </span>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between gap-2 px-3.5 py-2.5">
+            <div class="min-w-0">
+              <div class="flex items-center gap-2">
+                <span class="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-300">D-24</span>
+                <span class="font-medium text-slate-100 truncate">S*** D****</span>
+              </div>
+              <p class="mt-0.5 text-[11px] text-slate-400">Kasım 2026 aidatı · Havale/EFT</p>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+              <span class="font-semibold text-white tabular-nums">₺1.575</span>
+              <span class="rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-300">
+                A5 PDF
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alt Durum Şeridi -->
+      <div class="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-emerald-500/15 bg-emerald-500/[0.06] px-3.5 py-2.5 text-[11px]">
+        <div class="flex items-center gap-2 text-emerald-200">
+          <svg class="h-4 w-4 text-emerald-400 shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path
+              fill-rule="evenodd"
+              d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <span>KVKK Maskeli Pano İcmali &amp; R2 Belge Arşivi senkronize</span>
+        </div>
+        <span class="font-medium text-emerald-400">Denetim kaydı #4821</span>
+      </div>
+    </div>
+  </div>
+</div>
