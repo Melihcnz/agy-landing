@@ -28,9 +28,8 @@ export interface PublicPlansApiResponse {
 }
 
 /**
- * Ağ veya CORS hatası durumunda kullanılacak güncel fallback paket listesi.
- * Fiyatlar canlı API ile birebir uyumlu olacak şekilde kuruş cinsindendir (1 TL = 100 kuruş).
- * Yıllık ücret = 10 aylık ücret (2 ay ücretsiz).
+ * Canlı GET /api/v1/billing/public-plans yanıtıyla birebir uyumlu fallback paket verileri.
+ * Fiyatlar kuruş cinsindendir (1 TL = 100 kuruş). Yıllık ücret = 10 aylık ücret (2 ay ücretsiz).
  */
 export const FALLBACK_PLANS_DATA: PublicPlansPayload = {
   trialDays: 14,
@@ -56,7 +55,7 @@ export const FALLBACK_PLANS_DATA: PublicPlansPayload = {
     },
     {
       code: 'STARTER',
-      name: 'Starter',
+      name: 'Standart',
       tagline: 'Birden fazla apartman yöneten ofisler için',
       maxBuildings: 5,
       maxUnits: 250,
@@ -76,14 +75,14 @@ export const FALLBACK_PLANS_DATA: PublicPlansPayload = {
       code: 'PRO',
       name: 'Profesyonel',
       tagline: 'Büyüyen profesyonel site yönetim şirketleri için',
-      maxBuildings: 20,
-      maxUnits: 1000,
+      maxBuildings: 25,
+      maxUnits: 1500,
       monthlyPriceKurus: 349000,
       yearlyPriceKurus: 3490000,
       currency: 'TRY',
       isRecommended: true,
       features: [
-        'Starter paketindeki tüm özellikler',
+        'Standart paketindeki tüm özellikler',
         'Çoklu ekip üyesi & rol bazlı yetkilendirme',
         'Toplu aidat & gecikme bildirimi otomasyonu',
         'Gelişmiş denetim kayıtları & dışa aktarım',
@@ -94,8 +93,8 @@ export const FALLBACK_PLANS_DATA: PublicPlansPayload = {
       code: 'ENTERPRISE',
       name: 'Kurumsal',
       tagline: 'Büyük ölçekli tesis ve yönetim grupları için',
-      maxBuildings: null,
-      maxUnits: null,
+      maxBuildings: 200,
+      maxUnits: 15000,
       monthlyPriceKurus: 799000,
       yearlyPriceKurus: 7990000,
       currency: 'TRY',
@@ -144,7 +143,7 @@ export function formatLimitLabel(
   const unitText =
     maxUnits === null || maxUnits === undefined || maxUnits <= 0 || maxUnits >= 999999
       ? 'Sınırsız Daire'
-      : `${tryIntegerFormatter.format(maxUnits)} Daireye Kadar`;
+      : `${tryIntegerFormatter.format(maxUnits)} Daire`;
 
   return `${buildingText} · ${unitText}`;
 }

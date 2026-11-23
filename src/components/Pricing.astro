@@ -6,50 +6,50 @@ import {
   getPlanDisplayMetrics,
 } from '../config/pricing';
 
-const initialCycle: BillingCycle = 'MONTHLY';
+const initialCycle: BillingCycle = 'YEARLY';
 const { plans, trialDays } = FALLBACK_PLANS_DATA;
 ---
 
-<section id="fiyatlandirma" class="py-20 sm:py-28 scroll-mt-20">
+<section id="fiyatlandirma" class="py-24 sm:py-28 scroll-mt-20">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Başlık & Aylık/Yıllık Geçiş Anahtarı -->
     <div class="mx-auto max-w-2xl text-center">
-      <span class="inline-flex items-center rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-300">
-        Şeffaf Fiyatlandırma
-      </span>
-      <h2 class="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-white">
-        Bina sayınıza göre ölçeklenen esnek paketler.
+      <p class="text-xs font-medium uppercase tracking-wider text-zinc-500">
+        Fiyatlandırma
+      </p>
+      <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-[-0.025em] text-white">
+        Bina sayınıza göre şeffaf paketler.
       </h2>
-      <p class="mt-4 text-base text-slate-400">
-        Tüm paketlerde <span data-trial-days>{trialDays}</span> gün boyunca tüm özellikleri kredi kartı olmadan deneyin.
+      <p class="mt-4 text-base text-zinc-400">
+        Tüm paketler <span class="mono-num text-zinc-200" data-trial-days>{trialDays}</span> günlük ücretsiz deneme içerir.
       </p>
 
-      <!-- Aylık / Yıllık (2 Ay Ücretsiz) Anahtarı -->
-      <div class="mt-8 inline-flex items-center rounded-2xl border border-emerald-500/20 bg-[#0b1410] p-1.5" role="group" aria-label="Faturalandırma dönemi">
+      <!-- Aylık / Yıllık (2 Ay Ücretsiz) Anahtarı — Varsayılan: Yıllık -->
+      <div class="mt-8 inline-flex items-center rounded-xl border border-white/[0.09] bg-[#111315] p-1" role="group" aria-label="Faturalandırma dönemi">
         <button
           type="button"
           data-cycle-btn="MONTHLY"
-          aria-pressed="true"
-          class="rounded-xl bg-emerald-500 px-5 py-2 text-sm font-semibold text-[#04110b] shadow-sm transition-colors cursor-pointer"
+          aria-pressed="false"
+          class="rounded-lg px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors cursor-pointer"
         >
           Aylık
         </button>
         <button
           type="button"
           data-cycle-btn="YEARLY"
-          aria-pressed="false"
-          class="inline-flex items-center gap-2 rounded-xl px-5 py-2 text-sm font-medium text-slate-300 hover:text-white transition-colors cursor-pointer"
+          aria-pressed="true"
+          class="inline-flex items-center gap-1.5 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-[#05110a] transition-colors cursor-pointer"
         >
           <span>Yıllık</span>
-          <span class="rounded-full bg-emerald-500/20 border border-emerald-400/35 px-2 py-0.5 text-[11px] font-semibold text-emerald-200">
-            2 Ay Ücretsiz
+          <span data-yearly-note class="text-xs font-medium text-[#05110a]/75">
+            (2 Ay Ücretsiz)
           </span>
         </button>
       </div>
     </div>
 
-    <!-- 4 Paket Kartı (Build anında fallback ile SSR render, açılışta canlı API ile senkronize) -->
-    <div id="pricing-grid" class="mt-14 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch">
+    <!-- 4 Paket Kartı (Canlı API ile birebir uyumlu fallback SSR, açılışta canlı senkron) -->
+    <div id="pricing-grid" class="mt-14 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 items-stretch">
       {
         plans.map((plan) => {
           const metrics = getPlanDisplayMetrics(plan, initialCycle);
@@ -58,47 +58,61 @@ const { plans, trialDays } = FALLBACK_PLANS_DATA;
             <article
               data-plan-code={plan.code}
               class:list={[
-                'relative flex flex-col rounded-2xl p-6 sm:p-7',
+                'specular-top relative flex flex-col rounded-xl p-6 sm:p-7',
                 isRecommended
-                  ? 'border border-emerald-400/50 bg-gradient-to-b from-[#10241b] to-[#0b1410] shadow-2xl shadow-emerald-950/70 ring-1 ring-emerald-400/20'
+                  ? 'border border-white/[0.18] bg-[#15171a]'
                   : 'surface-card surface-card-hover',
               ]}
             >
-              {isRecommended && (
-                <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                  <span class="inline-flex items-center rounded-full bg-emerald-500 px-3.5 py-1 text-xs font-bold tracking-wide text-[#04110b] shadow-lg shadow-emerald-500/30">
-                    Önerilen
-                  </span>
-                </div>
-              )}
-
               <div>
-                <h3 class="text-lg font-bold text-white">{plan.name}</h3>
-                <p class="mt-1.5 text-xs leading-relaxed text-slate-400 min-h-[2.25rem]">
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="text-base font-semibold text-white">{plan.name}</h3>
+                  {isRecommended && (
+                    <span class="rounded-md bg-zinc-100 px-2 py-0.5 text-[11px] font-semibold text-[#090a0b] shrink-0">
+                      Önerilen
+                    </span>
+                  )}
+                </div>
+                <p class="mt-1.5 text-xs leading-relaxed text-zinc-400 min-h-[2.25rem]">
                   {plan.tagline}
                 </p>
-                <div class="mt-4 inline-flex items-center rounded-lg border border-emerald-500/20 bg-[#07100c] px-2.5 py-1 text-xs font-medium text-emerald-300">
+                <div class="mt-4 inline-flex items-center rounded-md border border-white/[0.08] bg-[#0d0f11] px-2.5 py-1 mono-num text-[11px] font-medium text-zinc-300">
                   {formatLimitLabel(plan.maxBuildings, plan.maxUnits)}
                 </div>
               </div>
 
-              <div class="mt-6 pb-6 border-b border-emerald-500/12">
-                <div class="flex items-baseline gap-1.5 flex-wrap">
-                  <span class="text-xl font-bold text-emerald-400">{metrics.symbol}</span>
-                  <span class="font-display text-4xl font-extrabold tracking-tight text-white tabular-nums">
+              <div class="mt-6 pb-6 border-b border-white/[0.08]">
+                <div class="flex items-baseline gap-1 flex-wrap">
+                  <span class="mono-num text-lg font-semibold text-zinc-400">{metrics.symbol}</span>
+                  <span class="mono-num text-3xl sm:text-4xl font-bold tracking-tight text-white">
                     {metrics.primaryAmount}
                   </span>
-                  <span class="text-sm font-medium text-slate-400">{metrics.periodSuffix}</span>
+                  <span class="text-sm text-zinc-500">{metrics.periodSuffix}</span>
+                  {metrics.strikethroughAmount && (
+                    <span class="ml-1.5 mono-num text-sm text-zinc-600 line-through">
+                      {metrics.strikethroughAmount}
+                    </span>
+                  )}
                 </div>
-                <div class="mt-2 text-xs text-slate-400">
-                  {metrics.billingSubtext}
-                </div>
+                <p class="mt-2 text-xs text-zinc-500 min-h-[2.25rem] leading-relaxed">
+                  {metrics.savingsBadge
+                    ? `${metrics.billingSubtext} · ${metrics.savingsBadge}`
+                    : metrics.billingSubtext}
+                </p>
               </div>
 
               <ul class="mt-6 space-y-3 flex-1">
                 {plan.features.map((feature) => (
-                  <li class="flex items-start gap-2.5 text-sm text-slate-300">
-                    <svg class="h-4 w-4 shrink-0 text-emerald-400 mt-0.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <li class="flex items-start gap-2.5 text-sm text-zinc-300">
+                    <svg
+                      class:list={[
+                        'h-4 w-4 shrink-0 mt-0.5',
+                        isRecommended ? 'text-emerald-500' : 'text-zinc-500',
+                      ]}
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
                       <path
                         fill-rule="evenodd"
                         d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
@@ -114,10 +128,10 @@ const { plans, trialDays } = FALLBACK_PLANS_DATA;
                 <a
                   href={buildRegisterUrl(plan.code, initialCycle)}
                   class:list={[
-                    'inline-flex w-full items-center justify-center rounded-xl px-4 py-3 text-sm font-semibold transition-colors',
+                    'inline-flex w-full items-center justify-center rounded-lg px-4 py-2.5 text-sm transition-colors',
                     isRecommended
-                      ? 'bg-emerald-500 text-[#04110b] shadow-lg shadow-emerald-500/20 hover:bg-emerald-400'
-                      : 'border border-emerald-500/25 bg-[#07100c] text-white hover:border-emerald-400/55 hover:bg-emerald-500/10',
+                      ? 'bg-emerald-500 font-semibold text-[#05110a] hover:bg-emerald-400'
+                      : 'border border-white/[0.12] bg-[#181b1f] font-medium text-zinc-100 hover:border-white/[0.22] hover:bg-[#1f2328]',
                   ]}
                 >
                   {trialDays} Gün Ücretsiz Başla
@@ -129,8 +143,8 @@ const { plans, trialDays } = FALLBACK_PLANS_DATA;
       }
     </div>
 
-    <p class="mt-8 text-center text-xs text-slate-400">
-      Tüm paketlerde <span data-trial-days>{trialDays}</span> gün ücretsiz deneme · Kredi kartı gerekmez · İstediğiniz zaman paket yükseltin veya iptal edin.
+    <p class="mt-8 text-center text-xs text-zinc-500">
+      Tüm paketlerde <span class="mono-num text-zinc-300" data-trial-days>{trialDays}</span> gün ücretsiz deneme · Kredi kartı gerekmez · Taahhütsüz
     </p>
   </div>
 </section>

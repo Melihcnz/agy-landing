@@ -2,30 +2,21 @@
 import { SITE } from '../config/site';
 ---
 
-<section class="py-20 sm:py-28">
+<section class="py-24 sm:py-28">
   <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-    <div class="relative overflow-hidden rounded-3xl border border-emerald-500/30 bg-gradient-to-br from-[#0f241b] via-[#0b1712] to-[#07100c] px-6 py-14 sm:px-12 sm:py-16 text-center shadow-2xl shadow-emerald-950/50">
-      <div
-        class="pointer-events-none absolute -top-24 left-1/2 h-56 w-96 -translate-x-1/2 rounded-full bg-emerald-500/15 blur-3xl"
-        aria-hidden="true"
-      >
-      </div>
-
-      <div class="relative mx-auto max-w-2xl">
-        <p class="text-xs font-semibold uppercase tracking-widest text-emerald-400">
-          Kredi kartı gerekmez · 14 gün ücretsiz
-        </p>
-        <h2 class="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-          Apartman yönetimine saatler değil, dakikalar ayırın.
+    <div class="specular-top rounded-2xl border border-white/[0.10] bg-[#111315] px-6 py-14 sm:px-12 sm:py-16 text-center">
+      <div class="mx-auto max-w-xl">
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-[-0.025em] text-white">
+          Apartman ve site yönetiminizi düzenli hale getirin.
         </h2>
-        <p class="mt-4 text-base text-slate-300 leading-relaxed">
-          AgyProp ile aidat tahsilatı, A5 PDF makbuzlar, KVKK uyumlu pano icmali ve belge arşivi her zaman elinizin altında olsun.
+        <p class="mt-4 text-base text-zinc-400 leading-relaxed">
+          Aidat tahsilatı, A5 PDF makbuz, KVKK pano icmali ve belge arşivini 14 gün boyunca ücretsiz deneyin.
         </p>
 
-        <div class="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3.5">
+        <div class="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
           <a
             href={SITE.registerUrl}
-            class="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-7 py-3.5 text-sm sm:text-base font-semibold text-[#04110b] shadow-xl shadow-emerald-500/25 hover:bg-emerald-400 transition-colors"
+            class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-sm font-semibold text-[#05110a] hover:bg-emerald-400 transition-colors"
           >
             <span>14 Gün Ücretsiz Dene</span>
             <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -38,11 +29,15 @@ import { SITE } from '../config/site';
           </a>
           <a
             href={SITE.loginUrl}
-            class="inline-flex items-center justify-center rounded-xl border border-emerald-500/25 bg-[#07100c]/80 px-6 py-3.5 text-sm sm:text-base font-medium text-slate-100 hover:border-emerald-400/50 hover:bg-[#0b1410] transition-colors"
+            class="inline-flex items-center justify-center rounded-lg border border-white/[0.12] bg-[#181b1f] px-6 py-3 text-sm font-medium text-zinc-200 hover:border-white/[0.22] hover:text-white transition-colors"
           >
-            Mevcut Hesaba Giriş Yap
+            Giriş Yap
           </a>
         </div>
+
+        <p class="mt-4 text-xs text-zinc-500">
+          Kredi kartı gerekmez · 1 dakikada kurulum
+        </p>
       </div>
     </div>
   </div>

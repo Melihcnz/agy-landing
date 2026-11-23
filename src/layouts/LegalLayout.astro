@@ -14,26 +14,25 @@ const fullTitle = `${title} | ${SITE.brandName}`;
 ---
 
 <BaseLayout title={fullTitle} description={description} canonicalPath={canonicalPath}>
-  <section class="relative overflow-hidden border-b border-emerald-500/10 bg-hero-glow">
+  <section class="border-b border-white/[0.08] bg-subtle-top">
     <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-12 pb-10 sm:pt-16 sm:pb-12">
-      <nav aria-label="Sayfa yolu" class="mb-6 flex items-center gap-2 text-xs text-slate-400">
-        <a href="/" class="hover:text-emerald-400 transition-colors">Ana Sayfa</a>
+      <nav aria-label="Sayfa yolu" class="mb-5 flex items-center gap-2 text-xs text-zinc-500">
+        <a href="/" class="hover:text-zinc-200 transition-colors">Ana Sayfa</a>
         <span aria-hidden="true">/</span>
-        <span class="text-emerald-300/90">Yasal Belgeler</span>
+        <span class="text-zinc-300">Yasal Belgeler</span>
       </nav>
 
-      <div class="inline-flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-300 mb-4">
-        <span>Son güncelleme: {SITE.company.legalLastUpdated}</span>
-      </div>
-
-      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-[-0.025em] text-white">
         {title}
       </h1>
-      <p class="mt-3 max-w-2xl text-base text-slate-300/90 leading-relaxed">
+      <p class="mt-3 max-w-2xl text-base text-zinc-400 leading-relaxed">
         {summary}
       </p>
+      <p class="mt-3 mono-num text-xs text-zinc-500">
+        Son güncelleme: {SITE.company.legalLastUpdated}
+      </p>
 
-      <!-- Yasal sayfalar arası hızlı geçiş -->
+      <!-- Yasal sayfalar arası geçiş -->
       <div class="mt-8 flex flex-wrap gap-2">
         {
           SITE.legalLinks.map((item) => {
@@ -45,8 +44,8 @@ const fullTitle = `${title} | ${SITE.brandName}`;
                 class:list={[
                   'rounded-lg border px-3.5 py-2 text-xs font-medium transition-colors',
                   isActive
-                    ? 'border-emerald-400/50 bg-emerald-500/15 text-emerald-200'
-                    : 'border-emerald-500/15 bg-[#0b1410] text-slate-300 hover:border-emerald-500/35 hover:text-white',
+                    ? 'border-white/25 bg-[#191c20] text-white'
+                    : 'border-white/[0.08] bg-[#111315] text-zinc-400 hover:border-white/[0.16] hover:text-zinc-100',
                 ]}
               >
                 {item.label}
@@ -62,47 +61,47 @@ const fullTitle = `${title} | ${SITE.brandName}`;
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
       <!-- Sağlayıcı / Veri Sorumlusu Bilgi Kartı -->
       <aside class="lg:col-span-4 lg:sticky lg:top-24">
-        <div class="surface-card rounded-2xl p-6">
-          <h2 class="text-sm font-semibold uppercase tracking-wider text-emerald-400">
+        <div class="surface-card rounded-xl p-6">
+          <h2 class="text-xs font-semibold uppercase tracking-wider text-zinc-400">
             Hizmet Sağlayıcı Bilgileri
           </h2>
           <dl class="mt-4 space-y-3 text-sm">
             <div>
-              <dt class="text-xs text-slate-400">Ünvan</dt>
-              <dd class="mt-0.5 font-medium text-slate-100">{SITE.company.legalName}</dd>
+              <dt class="text-xs text-zinc-500">Ünvan</dt>
+              <dd class="mt-0.5 font-medium text-zinc-100">{SITE.company.legalName}</dd>
             </div>
             <div>
-              <dt class="text-xs text-slate-400">Marka / Platform</dt>
-              <dd class="mt-0.5 text-slate-200">{SITE.company.tradeName} ({SITE.siteUrl.replace('https://', '')})</dd>
+              <dt class="text-xs text-zinc-500">Marka / Platform</dt>
+              <dd class="mt-0.5 text-zinc-300">{SITE.company.tradeName} ({SITE.siteUrl.replace('https://', '')})</dd>
             </div>
             <div class="grid grid-cols-2 gap-3">
               <div>
-                <dt class="text-xs text-slate-400">Vergi Dairesi</dt>
-                <dd class="mt-0.5 text-slate-200">{SITE.company.taxOffice}</dd>
+                <dt class="text-xs text-zinc-500">Vergi Dairesi</dt>
+                <dd class="mt-0.5 text-zinc-300">{SITE.company.taxOffice}</dd>
               </div>
               <div>
-                <dt class="text-xs text-slate-400">Vergi No / TCKN</dt>
-                <dd class="mt-0.5 text-slate-200">{SITE.company.taxNumber}</dd>
+                <dt class="text-xs text-zinc-500">Vergi No / TCKN</dt>
+                <dd class="mt-0.5 text-zinc-300 mono-num">{SITE.company.taxNumber}</dd>
               </div>
             </div>
             <div>
-              <dt class="text-xs text-slate-400">MERSİS</dt>
-              <dd class="mt-0.5 text-slate-200">{SITE.company.mersisNumber}</dd>
+              <dt class="text-xs text-zinc-500">MERSİS</dt>
+              <dd class="mt-0.5 text-zinc-300 mono-num">{SITE.company.mersisNumber}</dd>
             </div>
             <div>
-              <dt class="text-xs text-slate-400">Adres</dt>
-              <dd class="mt-0.5 text-slate-200 leading-relaxed">{SITE.company.address}</dd>
+              <dt class="text-xs text-zinc-500">Adres</dt>
+              <dd class="mt-0.5 text-zinc-300 leading-relaxed">{SITE.company.address}</dd>
             </div>
             <div>
-              <dt class="text-xs text-slate-400">Telefon</dt>
-              <dd class="mt-0.5 text-slate-200">{SITE.company.phone}</dd>
+              <dt class="text-xs text-zinc-500">Telefon</dt>
+              <dd class="mt-0.5 text-zinc-300 mono-num">{SITE.company.phone}</dd>
             </div>
             <div>
-              <dt class="text-xs text-slate-400">E-posta</dt>
+              <dt class="text-xs text-zinc-500">E-posta</dt>
               <dd class="mt-0.5">
                 <a
                   href={`mailto:${SITE.company.email}`}
-                  class="text-emerald-400 hover:text-emerald-300 underline underline-offset-4"
+                  class="text-zinc-100 hover:text-white underline decoration-white/30 hover:decoration-white underline-offset-4 transition-colors"
                 >
                   {SITE.company.email}
                 </a>
@@ -113,7 +112,7 @@ const fullTitle = `${title} | ${SITE.brandName}`;
       </aside>
 
       <!-- Doküman İçeriği -->
-      <article class="lg:col-span-8 surface-card rounded-2xl p-6 sm:p-10 legal-prose">
+      <article class="lg:col-span-8 surface-card rounded-xl p-6 sm:p-10 legal-prose">
         <slot />
       </article>
     </div>
@@ -122,14 +121,14 @@ const fullTitle = `${title} | ${SITE.brandName}`;
 
 <style is:global>
   .legal-prose h2 {
-    font-size: 1.25rem;
-    line-height: 1.6;
+    font-size: 1.2rem;
+    line-height: 1.5;
     font-weight: 700;
     color: #ffffff;
     margin-top: 2rem;
     margin-bottom: 0.75rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(16, 185, 129, 0.14);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .legal-prose h2:first-child {
@@ -139,7 +138,7 @@ const fullTitle = `${title} | ${SITE.brandName}`;
   .legal-prose h3 {
     font-size: 1rem;
     font-weight: 600;
-    color: #d1fae5;
+    color: #f4f4f5;
     margin-top: 1.25rem;
     margin-bottom: 0.5rem;
   }
@@ -147,7 +146,7 @@ const fullTitle = `${title} | ${SITE.brandName}`;
   .legal-prose p {
     font-size: 0.9375rem;
     line-height: 1.75;
-    color: #cbd5e1;
+    color: #a1a1aa;
     margin-bottom: 0.9rem;
   }
 
@@ -155,7 +154,7 @@ const fullTitle = `${title} | ${SITE.brandName}`;
   .legal-prose ol {
     margin-bottom: 1rem;
     padding-left: 1.25rem;
-    color: #cbd5e1;
+    color: #a1a1aa;
     font-size: 0.9375rem;
     line-height: 1.75;
   }
@@ -173,17 +172,19 @@ const fullTitle = `${title} | ${SITE.brandName}`;
   }
 
   .legal-prose strong {
-    color: #f8fafc;
+    color: #f4f4f5;
     font-weight: 600;
   }
 
   .legal-prose a {
-    color: #34d399;
+    color: #f4f4f5;
     text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.3);
     text-underline-offset: 3px;
   }
 
   .legal-prose a:hover {
-    color: #6ee7b7;
+    color: #ffffff;
+    text-decoration-color: #ffffff;
   }
 </style>

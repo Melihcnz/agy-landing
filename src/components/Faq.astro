@@ -3,17 +3,17 @@ const faqs = [
   {
     question: '14 günlük ücretsiz deneme için kredi kartı gerekli mi?',
     answer:
-      'Hayır. E-posta adresinizle 1 dakikada hesabınızı açıp kredi kartı bilgisi girmeden 14 gün boyunca tüm özellikleri gerçek binalarınızla test edebilirsiniz. Deneme sonunda memnun kalırsanız dilediğiniz pakete geçebilirsiniz.',
+      'Hayır. E-posta adresinizle hesabınızı açıp kredi kartı bilgisi girmeden 14 gün boyunca tüm özellikleri kendi binalarınızla test edebilirsiniz. Deneme sonunda devam etmek isterseniz dilediğiniz paketi seçebilirsiniz.',
   },
   {
-    question: 'Otomatik FIFO mahsup tam olarak nasıl çalışır?',
+    question: 'Otomatik FIFO mahsup nasıl çalışır?',
     answer:
-      'Bir daireden toplu veya kısmi ödeme geldiğinde AgyProp tutarı en eski açık aidat döneminden başlayarak sırayla borçlara dağıtır. Hangi dönemin tamamen kapandığı, hangi dönemden ne kadar bakiye kaldığı otomatik hesaplanır ve denetim kaydına işlenir.',
+      'Bir daireden toplu veya kısmi ödeme geldiğinde AgyProp tutarı en eski açık aidat döneminden başlayarak sırayla borçlara dağıtır. Hangi dönemin kapandığı ve kalan bakiye otomatik hesaplanarak denetim kaydına işlenir.',
   },
   {
     question: 'KVKK maskeli pano icmali ne işe yarar?',
     answer:
-      'Apartman girişindeki duyuru panosuna borç-alacak listesi asarken sakinlerin açık ad-soyad bilgilerini paylaşmak KVKK açısından risk oluşturur. AgyProp tek tıkla "A*** Y*****" biçiminde maskelenmiş, yazıcıya hazır pano icmali oluşturur.',
+      'Apartman girişindeki duyuru panosuna borç-alacak listesi asarken sakinlerin açık ad-soyad bilgilerini paylaşmak KVKK açısından risk oluşturur. AgyProp tek tıkla "A*** Y*****" biçiminde maskelenmiş, yazıcıya hazır pano icmali üretir.',
   },
   {
     question: 'Belgelerimiz ve makbuzlarımız nerede saklanıyor?',
@@ -23,37 +23,34 @@ const faqs = [
   {
     question: 'Birden fazla apartman veya siteyi tek hesaptan yönetebilir miyim?',
     answer:
-      'Evet. Starter, Profesyonel ve Kurumsal paketlerimiz çoklu bina yönetimi için tasarlanmıştır. Her binanın kasası, aidat planı, sakin listesi ve belgeleri birbirinden tamamen izole tutulur; tek menüden binalar arası anında geçiş yapabilirsiniz.',
+      'Evet. Standart, Profesyonel ve Kurumsal paketler çoklu bina yönetimi için tasarlanmıştır. Her binanın kasası, aidat planı, sakin listesi ve belgeleri birbirinden tamamen izole tutulur.',
   },
   {
     question: 'Paketimi sonradan yükseltebilir veya aboneliğimi iptal edebilir miyim?',
     answer:
-      'Elbette. Yeni bina eklediğinizde üst pakete anında geçebilirsiniz. Aylık aboneliklerde taahhüt yoktur; dilediğiniz zaman aboneliğinizi iptal edebilir, mevcut fatura dönemi sonuna kadar paneli kullanmaya devam edebilirsiniz.',
+      'Evet. Yeni bina eklediğinizde üst pakete geçiş yapabilirsiniz. Aylık aboneliklerde taahhüt yoktur; dilediğiniz zaman aboneliğinizi iptal edebilir, ödenmiş dönem sonuna kadar paneli kullanmaya devam edebilirsiniz.',
   },
 ] as const;
 ---
 
-<section id="sss" class="py-20 sm:py-24 border-t border-emerald-500/12 bg-[#09120e] scroll-mt-20">
-  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-    <div class="text-center">
-      <span class="inline-flex items-center rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-300">
+<section id="sss" class="border-y border-white/[0.08] bg-[#0c0d0f] scroll-mt-20">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-24 sm:py-28">
+    <div>
+      <p class="text-xs font-medium uppercase tracking-wider text-zinc-500">
         Sıkça Sorulan Sorular
-      </span>
-      <h2 class="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-white">
-        Aklınızdaki sorulara net yanıtlar.
+      </p>
+      <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-[-0.025em] text-white">
+        Merak edilenler.
       </h2>
     </div>
 
-    <div class="mt-12 space-y-3.5">
+    <div class="mt-12 divide-y divide-white/[0.08] border-y border-white/[0.08]">
       {
         faqs.map((faq, idx) => (
-          <details
-            class="group surface-card rounded-2xl open:border-emerald-500/35 transition-colors"
-            open={idx === 0}
-          >
-            <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-5 text-left text-sm sm:text-base font-semibold text-white select-none">
+          <details class="group py-5" open={idx === 0}>
+            <summary class="flex cursor-pointer items-center justify-between gap-4 text-left text-sm sm:text-base font-medium text-zinc-100 hover:text-white select-none transition-colors">
               <span>{faq.question}</span>
-              <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-emerald-500/20 bg-[#07100c] text-emerald-400 transition-transform duration-200 group-open:rotate-180">
+              <span class="flex h-6 w-6 shrink-0 items-center justify-center text-zinc-500 transition-transform duration-200 group-open:rotate-180 group-open:text-zinc-300">
                 <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                   <path
                     fill-rule="evenodd"
@@ -63,7 +60,7 @@ const faqs = [
                 </svg>
               </span>
             </summary>
-            <div class="px-6 pb-5 text-sm leading-relaxed text-slate-300/90 border-t border-emerald-500/10 pt-4">
+            <div class="pt-3 pr-8 text-sm leading-relaxed text-zinc-400">
               {faq.answer}
             </div>
           </details>

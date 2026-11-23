@@ -40,10 +40,15 @@ function normalizePlan(raw: PublicPlan): PublicPlan {
   };
 }
 
-function createCheckIcon(): SVGSVGElement {
+function createCheckIcon(isRecommended: boolean): SVGSVGElement {
   const ns = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(ns, 'svg');
-  svg.setAttribute('class', 'h-4 w-4 shrink-0 text-emerald-400 mt-0.5');
+  svg.setAttribute(
+    'class',
+    isRecommended
+      ? 'h-4 w-4 shrink-0 text-emerald-500 mt-0.5'
+      : 'h-4 w-4 shrink-0 text-zinc-500 mt-0.5',
+  );
   svg.setAttribute('viewBox', '0 0 20 20');
   svg.setAttribute('fill', 'currentColor');
   svg.setAttribute('aria-hidden', 'true');
@@ -59,90 +64,88 @@ function createCheckIcon(): SVGSVGElement {
   return svg;
 }
 
-function buildPlanCard(plan: PublicPlan, cycle: BillingCycle, trialDays: number): HTMLElement {
+function buildPlanCard(
+  plan: PublicPlan,
+  cycle: BillingCycle,
+  trialDays: number,
+  animatePrice: boolean,
+): HTMLElement {
   const metrics = getPlanDisplayMetrics(plan, cycle);
   const isRecommended = plan.isRecommended;
 
   const card = document.createElement('article');
   card.setAttribute('data-plan-code', plan.code);
   card.className = isRecommended
-    ? 'relative flex flex-col rounded-2xl border border-emerald-400/50 bg-gradient-to-b from-[#10241b] to-[#0b1410] p-6 sm:p-7 shadow-2xl shadow-emerald-950/70 ring-1 ring-emerald-400/20'
-    : 'relative flex flex-col rounded-2xl surface-card surface-card-hover p-6 sm:p-7';
-
-  if (isRecommended) {
-    const badgeWrap = document.createElement('div');
-    badgeWrap.className = 'absolute -top-3.5 left-1/2 -translate-x-1/2';
-    const badge = document.createElement('span');
-    badge.className =
-      'inline-flex items-center rounded-full bg-emerald-500 px-3.5 py-1 text-xs font-bold tracking-wide text-[#04110b] shadow-lg shadow-emerald-500/30';
-    badge.textContent = 'Önerilen';
-    badgeWrap.appendChild(badge);
-    card.appendChild(badgeWrap);
-  }
+    ? 'specular-top relative flex flex-col rounded-xl border border-white/[0.18] bg-[#15171a] p-6 sm:p-7'
+    : 'specular-top relative flex flex-col rounded-xl surface-card surface-card-hover p-6 sm:p-7';
 
   // Header
   const header = document.createElement('div');
+  const titleRow = document.createElement('div');
+  titleRow.className = 'flex items-center justify-between gap-2';
+
   const title = document.createElement('h3');
-  title.className = 'text-lg font-bold text-white';
+  title.className = 'text-base font-semibold text-white';
   title.textContent = plan.name;
-  header.appendChild(title);
+  titleRow.appendChild(title);
+
+  if (isRecommended) {
+    const recTag = document.createElement('span');
+    recTag.className = 'rounded-md bg-zinc-100 px-2 py-0.5 text-[11px] font-semibold text-[#090a0b] shrink-0';
+    recTag.textContent = 'Önerilen';
+    titleRow.appendChild(recTag);
+  }
+  header.appendChild(titleRow);
 
   const tagline = document.createElement('p');
-  tagline.className = 'mt-1.5 text-xs leading-relaxed text-slate-400 min-h-[2.25rem]';
+  tagline.className = 'mt-1.5 text-xs leading-relaxed text-zinc-400 min-h-[2.25rem]';
   tagline.textContent = plan.tagline;
   header.appendChild(tagline);
 
   const limits = document.createElement('div');
   limits.className =
-    'mt-4 inline-flex items-center rounded-lg border border-emerald-500/20 bg-[#07100c] px-2.5 py-1 text-xs font-medium text-emerald-300';
+    'mt-4 inline-flex items-center rounded-md border border-white/[0.08] bg-[#0d0f11] px-2.5 py-1 mono-num text-[11px] font-medium text-zinc-300';
   limits.textContent = formatLimitLabel(plan.maxBuildings, plan.maxUnits);
   header.appendChild(limits);
   card.appendChild(header);
 
   // Price Block
   const priceWrap = document.createElement('div');
-  priceWrap.className = 'mt-6 pb-6 border-b border-emerald-500/12';
+  priceWrap.className = animatePrice
+    ? 'mt-6 pb-6 border-b border-white/[0.08] pricing-swap'
+    : 'mt-6 pb-6 border-b border-white/[0.08]';
 
   const priceRow = document.createElement('div');
-  priceRow.className = 'flex items-baseline gap-1.5 flex-wrap';
+  priceRow.className = 'flex items-baseline gap-1 flex-wrap';
 
   const currencySpan = document.createElement('span');
-  currencySpan.className = 'text-xl font-bold text-emerald-400';
+  currencySpan.className = 'mono-num text-lg font-semibold text-zinc-400';
   currencySpan.textContent = metrics.symbol;
   priceRow.appendChild(currencySpan);
 
   const amountSpan = document.createElement('span');
-  amountSpan.className = 'font-display text-4xl font-extrabold tracking-tight text-white tabular-nums';
+  amountSpan.className = 'mono-num text-3xl sm:text-4xl font-bold tracking-tight text-white';
   amountSpan.textContent = metrics.primaryAmount;
   priceRow.appendChild(amountSpan);
 
   const suffixSpan = document.createElement('span');
-  suffixSpan.className = 'text-sm font-medium text-slate-400';
+  suffixSpan.className = 'text-sm text-zinc-500';
   suffixSpan.textContent = metrics.periodSuffix;
   priceRow.appendChild(suffixSpan);
 
   if (metrics.strikethroughAmount) {
     const strike = document.createElement('span');
-    strike.className = 'ml-1 text-sm text-slate-500 line-through tabular-nums';
+    strike.className = 'ml-1.5 mono-num text-sm text-zinc-600 line-through';
     strike.textContent = metrics.strikethroughAmount;
     priceRow.appendChild(strike);
   }
   priceWrap.appendChild(priceRow);
 
-  const subRow = document.createElement('div');
-  subRow.className = 'mt-2 flex flex-wrap items-center gap-2 text-xs text-slate-400';
-
-  const subText = document.createElement('span');
-  subText.textContent = metrics.billingSubtext;
-  subRow.appendChild(subText);
-
-  if (metrics.savingsBadge) {
-    const savePill = document.createElement('span');
-    savePill.className =
-      'inline-flex rounded-md bg-emerald-500/15 px-1.5 py-0.5 text-[11px] font-semibold text-emerald-300 tabular-nums';
-    savePill.textContent = metrics.savingsBadge;
-    subRow.appendChild(savePill);
-  }
+  const subRow = document.createElement('p');
+  subRow.className = 'mt-2 text-xs text-zinc-500 min-h-[2.25rem] leading-relaxed';
+  subRow.textContent = metrics.savingsBadge
+    ? `${metrics.billingSubtext} · ${metrics.savingsBadge}`
+    : metrics.billingSubtext;
   priceWrap.appendChild(subRow);
   card.appendChild(priceWrap);
 
@@ -152,8 +155,8 @@ function buildPlanCard(plan: PublicPlan, cycle: BillingCycle, trialDays: number)
 
   for (const feature of plan.features) {
     const li = document.createElement('li');
-    li.className = 'flex items-start gap-2.5 text-sm text-slate-300';
-    li.appendChild(createCheckIcon());
+    li.className = 'flex items-start gap-2.5 text-sm text-zinc-300';
+    li.appendChild(createCheckIcon(isRecommended));
     const text = document.createElement('span');
     text.textContent = feature;
     li.appendChild(text);
@@ -168,8 +171,8 @@ function buildPlanCard(plan: PublicPlan, cycle: BillingCycle, trialDays: number)
   const cta = document.createElement('a');
   cta.href = buildRegisterUrl(plan.code, cycle);
   cta.className = isRecommended
-    ? 'inline-flex w-full items-center justify-center rounded-xl bg-emerald-500 px-4 py-3 text-sm font-semibold text-[#04110b] shadow-lg shadow-emerald-500/20 hover:bg-emerald-400 transition-colors'
-    : 'inline-flex w-full items-center justify-center rounded-xl border border-emerald-500/25 bg-[#07100c] px-4 py-3 text-sm font-semibold text-white hover:border-emerald-400/55 hover:bg-emerald-500/10 transition-colors';
+    ? 'inline-flex w-full items-center justify-center rounded-lg bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-[#05110a] hover:bg-emerald-400 transition-colors'
+    : 'inline-flex w-full items-center justify-center rounded-lg border border-white/[0.12] bg-[#181b1f] px-4 py-2.5 text-sm font-medium text-zinc-100 hover:border-white/[0.22] hover:bg-[#1f2328] transition-colors';
   cta.textContent = `${trialDays} Gün Ücretsiz Başla`;
   ctaWrap.appendChild(cta);
   card.appendChild(ctaWrap);
@@ -177,7 +180,58 @@ function buildPlanCard(plan: PublicPlan, cycle: BillingCycle, trialDays: number)
   return card;
 }
 
+export function initMockupTabs(): void {
+  const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-mockup-tab]'));
+  const panels = Array.from(document.querySelectorAll<HTMLElement>('[data-mockup-panel]'));
+  if (tabs.length === 0 || panels.length === 0) return;
+
+  const activeClasses = ['border-emerald-500', 'text-white', 'font-semibold'];
+  const inactiveClasses = ['border-transparent', 'text-zinc-400', 'hover:text-zinc-200', 'font-medium'];
+
+  function activateTab(tabKey: string): void {
+    for (const tab of tabs) {
+      const isSelected = tab.dataset.mockupTab === tabKey;
+      tab.setAttribute('aria-selected', String(isSelected));
+      for (const cls of activeClasses) tab.classList.toggle(cls, isSelected);
+      for (const cls of inactiveClasses) tab.classList.toggle(cls, !isSelected);
+    }
+
+    for (const panel of panels) {
+      const isTarget = panel.dataset.mockupPanel === tabKey;
+      panel.hidden = !isTarget;
+      if (isTarget) {
+        panel.classList.remove('mockup-panel-enter');
+        void panel.offsetWidth;
+        panel.classList.add('mockup-panel-enter');
+      }
+    }
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => {
+      const key = tab.dataset.mockupTab;
+      if (key) activateTab(key);
+    });
+
+    tab.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+      event.preventDefault();
+      const nextIndex =
+        event.key === 'ArrowRight'
+          ? (index + 1) % tabs.length
+          : (index - 1 + tabs.length) % tabs.length;
+      const nextTab = tabs[nextIndex];
+      const nextKey = nextTab?.dataset.mockupTab;
+      if (nextTab && nextKey) {
+        activateTab(nextKey);
+        nextTab.focus();
+      }
+    });
+  });
+}
+
 export function initPricingSection(): void {
+  // Mobil çekmece anchor tıklamalarında kapanış
   const mobileDetails = document.getElementById('mobile-nav-details');
   if (mobileDetails instanceof HTMLDetailsElement) {
     mobileDetails.querySelectorAll('[data-mobile-link]').forEach((link) => {
@@ -187,6 +241,9 @@ export function initPricingSection(): void {
     });
   }
 
+  // Hero 3 sekmeli panel önizlemesi
+  initMockupTabs();
+
   const grid = document.getElementById('pricing-grid');
   if (!grid) return;
   const gridEl: HTMLElement = grid;
@@ -195,12 +252,13 @@ export function initPricingSection(): void {
   const yearlyBtn = document.querySelector<HTMLButtonElement>('[data-cycle-btn="YEARLY"]');
   const trialDaySpans = document.querySelectorAll<HTMLElement>('[data-trial-days]');
 
-  let activeCycle: BillingCycle = 'MONTHLY';
+  // Varsayılan aktif dönem: YEARLY (2 Ay Ücretsiz)
+  let activeCycle: BillingCycle = 'YEARLY';
   let currentData: PublicPlansPayload = FALLBACK_PLANS_DATA;
 
   function updateToggleUI(): void {
-    const activeClasses = ['bg-emerald-500', 'text-[#04110b]', 'font-semibold', 'shadow-sm'];
-    const inactiveClasses = ['text-slate-300', 'hover:text-white', 'font-medium'];
+    const activeClasses = ['bg-emerald-500', 'text-[#05110a]', 'font-semibold'];
+    const inactiveClasses = ['text-zinc-400', 'hover:text-white', 'font-medium'];
 
     if (monthlyBtn && yearlyBtn) {
       const isMonthly = activeCycle === 'MONTHLY';
@@ -215,13 +273,19 @@ export function initPricingSection(): void {
         monthlyBtn.classList.toggle(cls, !isMonthly);
         yearlyBtn.classList.toggle(cls, isMonthly);
       }
+
+      const yearlyNote = yearlyBtn.querySelector<HTMLElement>('[data-yearly-note]');
+      if (yearlyNote) {
+        yearlyNote.classList.toggle('text-[#05110a]/75', !isMonthly);
+        yearlyNote.classList.toggle('text-zinc-500', isMonthly);
+      }
     }
   }
 
-  function render(): void {
+  function render(animatePrice: boolean): void {
     const fragment = document.createDocumentFragment();
     for (const plan of currentData.plans) {
-      fragment.appendChild(buildPlanCard(plan, activeCycle, currentData.trialDays));
+      fragment.appendChild(buildPlanCard(plan, activeCycle, currentData.trialDays, animatePrice));
     }
     gridEl.replaceChildren(fragment);
 
@@ -234,17 +298,17 @@ export function initPricingSection(): void {
     if (activeCycle === 'MONTHLY') return;
     activeCycle = 'MONTHLY';
     updateToggleUI();
-    render();
+    render(true);
   });
 
   yearlyBtn?.addEventListener('click', () => {
     if (activeCycle === 'YEARLY') return;
     activeCycle = 'YEARLY';
     updateToggleUI();
-    render();
+    render(true);
   });
 
-  // Canlı fiyatları tek doğru kaynaktan çek; ağ/CORS hatasında fallback ile sessizce devam et
+  // Canlı fiyatları tek doğru kaynaktan çek; aktif MONTHLY/YEARLY seçimini koruyarak güncelle
   const controller = new AbortController();
   const timeoutId = window.setTimeout(() => controller.abort(), 6000);
 
@@ -286,7 +350,7 @@ export function initPricingSection(): void {
             : 'TRY',
         plans: validPlans,
       };
-      render();
+      render(false);
     })
     .catch(() => {
       // Ağ / CORS / zaman aşımı durumunda statik fallback fiyatlarıyla sorunsuz devam edilir.

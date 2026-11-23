@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import TrustStrip from '../components/TrustStrip.astro';
 import FeaturesBento from '../components/FeaturesBento.astro';
+import ExcelComparison from '../components/ExcelComparison.astro';
 import HowItWorks from '../components/HowItWorks.astro';
 import Pricing from '../components/Pricing.astro';
 import Faq from '../components/Faq.astro';
@@ -47,6 +48,8 @@ const structuredData = [
   <Hero />
   <TrustStrip />
   <FeaturesBento />
+  <div class="section-divider" aria-hidden="true"></div>
+  <ExcelComparison />
   <HowItWorks />
   <Pricing />
   <Faq />

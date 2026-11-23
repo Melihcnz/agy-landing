@@ -24,7 +24,8 @@ export const SITE = {
     defaultTitle: 'AgyProp — Apartman ve Site Yönetim Yazılımı',
     defaultDescription:
       'Apartman ve site yöneticileri için otomatik FIFO aidat takibi, tek tıkla A5 PDF makbuz, KVKK maskeli pano icmali, sakin dekont onayı ve R2 belge arşivi. 14 gün ücretsiz deneyin.',
-    ogImage: '/og-image.svg',
+    ogImage: '/og-image.png',
+    ogImageAlt: 'AgyProp — Apartman ve Site Yönetim Yazılımı',
   },
 
   /**
